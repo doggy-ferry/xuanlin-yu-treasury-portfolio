@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xuanlin Yu — Treasury Automation &amp; Finance Transformation</title>
+<meta name="description" content="Portfolio of Xuanlin Yu: corporate treasury, cash and liquidity management, cash-flow forecasting, payment controls and finance-process automation.">
+<meta property="og:title" content="Xuanlin Yu — Treasury Automation &amp; Finance Transformation">
+<meta property="og:description" content="Corporate treasury, cash-flow forecasting, payment controls and finance-process automation, supported by controlled and auditable portfolio projects.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top">Xuanlin Yu</a>
+    <button id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#focus">Focus</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#how">How I work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1>Xuanlin Yu</h1>
+    <p class="role">Treasury Automation | Cash &amp; Liquidity Management | Finance Transformation</p>
+    <p class="value">I translate treasury and finance logic into controlled, auditable and maintainable automation.</p>
+    <p class="sub">Hands-on liquidity, cash-flow, FX, payment and control experience across a parent company and six subsidiaries, combined with Oracle ERP Financials (AP, AR, GL), UAT and tested Excel, Power Query and VBA workflows.</p>
+    <ul class="caps" aria-label="Key capabilities">
+      <li>Cash &amp; liquidity management</li>
+      <li>Cash-flow forecasting</li>
+      <li>FX &amp; payment controls</li>
+      <li>Treasury controls &amp; UAT</li>
+      <li>Excel, Power Query, VBA, Power BI &amp; SQL</li>
+    </ul>
+    <div class="actions">
+      <a class="btn" href="#projects">View featured projects</a>
+      <a class="btn ghost" data-link="GITHUB_PROFILE_URL" hidden>GitHub</a>
+      <a class="btn ghost" data-link="LINKEDIN_URL" hidden>LinkedIn</a>
+      <a class="btn ghost" data-link="EMAIL_ADDRESS" hidden>Email</a>
+      <a class="btn ghost" data-link="RESUME_FILE" hidden>Resume</a>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <h2>Professional Focus</h2>
+    <p class="lead">Treasury judgement, control design and finance-system delivery applied to recurring operational problems.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Cash &amp; Liquidity Management</h3><p>Multi-entity and multi-currency cash positions, liquidity forecasts, bank activity and funding controls.</p></div>
+      <div class="card"><h3>Cash-Flow Forecasting</h3><p>Actual and forecast logic, controlled account mapping, reconciliation and variance investigation.</p></div>
+      <div class="card"><h3>FX &amp; Payment Controls</h3><p>FX exposure and hedging support, pre-payment checks, exception routing and independent confirmation points.</p></div>
+      <div class="card"><h3>Finance Transformation</h3><p>Process redesign, control mapping and maintainable Excel, Power Query and VBA automation.</p></div>
+      <div class="card"><h3>Finance Systems &amp; Analytics</h3><p>Oracle AP, AR and GL; UAT; portfolio-demonstrated Power BI, DAX and SQL querying and aggregation.</p></div>
+      <div class="card"><h3>Cross-Border Delivery</h3><p>Chinese, Japanese and English coordination across Japan, China, Taiwan and Thailand.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="projects">
+  <div class="wrap">
+    <h2>Featured Projects</h2>
+    <p class="lead">Three projects, ordered by relevance to treasury technology and finance transformation.</p>
+
+    <!-- Project 1 -->
+    <article class="project flagship" id="project-treasury" aria-labelledby="p1-title">
+      <span class="tag">Flagship project</span>
+      <h3 id="p1-title">Treasury Technology &amp; Finance Transformation Portfolio</h3>
+      <p>Two reusable demonstrations built on synthetic data: a foreign-currency pre-payment control and an actual/forecast cash-flow automation framework.</p>
+      <div class="facts">
+        <div><h4>Business problem</h4><p>Foreign-currency payments are irreversible, and checking each one against several sources by hand is slow and error-prone. Monthly cash-flow, bank and AR/AP updates were repetitive, time-consuming copy-and-paste work.</p></div>
+        <div><h4>My role</h4><p>I translated treasury requirements into control logic, designed the data flow and acceptance tests, and reviewed the implementation. AI-assisted coding supported delivery.</p></div>
+        <div><h4>Solution approach</h4>
+          <ul class="tight">
+            <li><strong>Payment control:</strong> one row per payment brings together payment instruction, beneficiary history, IBAN/SWIFT checks, ERP/AP evidence and invoice allocation.</li>
+            <li><strong>Cash flow:</strong> Power Query standardises AP, bank and AR inputs; VBA imports them; a cutoff date switches actuals to forecast.</li>
+            <li>A Vendor Reference Bridge keeps matching working when long account identifiers are truncated or reformatted.</li>
+          </ul></div>
+        <div><h4>Control design</h4>
+          <ul class="tight">
+            <li>Header comparison, row checks and an AR company-code check</li>
+            <li>Formula-column extension; pivot refresh and date/time stamps where coded</li>
+            <li>Source File column kept for traceability</li>
+            <li>A control-difference check between detail and total</li>
+          </ul></div>
+        <div><h4>Validation and exception handling</h4><p>Account, SWIFT, IBAN-format, amount and purpose-code exceptions are routed to Critical, Review or OK. Empty queries, changed headers and company-code mismatches stop the run instead of passing silently.</p></div>
+        <div><h4>Human-review points</h4><p>Account changes need independent confirmation. Green means "no contradiction found within the defined rules", not "proven correct". The checks cannot prove that source data is true.</p></div>
+        <div class="full"><h4>Estimated operational impact</h4>
+          <ul class="tight">
+            <li>Cash-flow update: from about 5–6 hours per cycle (twice a month) to under 30 minutes</li>
+            <li>Bank-statement processing: from about 2 hours to about 5 minutes</li>
+            <li>Foreign-currency payment review: about 8 hours per month saved</li>
+            <li>Combined recurring impact: approximately 19–21 hours per month (components overlap and are not simply added)</li>
+          </ul></div>
+      </div>
+      <p class="note"><strong>Estimated by the author based on before-and-after task time and operating frequency. Scope and methodology are described in the project documentation.</strong></p>
+      <p class="note"><strong>Synthetic data and confidentiality.</strong> Built independently with synthetic entities, amounts, dates and identifiers. The public materials contain no employer data or internal identifiers.</p>
+      <div class="shots two">
+        <figure><img src="assets/img/fx_check_left.png" alt="Excerpt of the synthetic foreign-currency payment control sheet showing six payments with vendor, currency, amount, beneficiary, bank, SWIFT and a master result column flagging account changed and new beneficiary." loading="lazy" width="2000" height="187"><figcaption>FX payment control demo: row-level evidence and exception flags (synthetic data).</figcaption></figure>
+        <figure><img src="assets/img/cf_cashflow.png" alt="Excerpt of the synthetic cash-flow assembly sheet in JPY million with an actual cutoff of 6 November 2026; actual rows are white and forecast rows are shaded blue; a control-difference column is zero throughout." loading="lazy" width="2000" height="612"><figcaption>Cash-flow demo: actual/forecast switch at the cutoff date and a control-difference check (synthetic data).</figcaption></figure>
+      </div>
+      <div class="ext" id="sql-powerbi-extension">
+        <span class="tag">Completed Treasury SQL and Power BI Analytics Extension</span>
+        <h4>Cash flow forecast and FX payment control in SQL and Power BI</h4>
+        <p>The two Excel tools above are extended with a tested SQL data layer and a three-page Power BI report, on fully synthetic data. Their rules were moved into SQL without changing either workbook.</p>
+        <ul class="tight">
+          <li><strong>Actual vs Forecast cash flow:</strong> twelve months, four entities, five currencies; daily cash position that reconciles to the Excel balance; variance with planted events that the tests detect.</li>
+          <li><strong>Pre-payment control:</strong> 150 payments checked against invoice, ERP schedule and vendor bank history by twenty rules; one primary exception and a red, amber or green risk level per payment; unmatched vendors stay visible.</li>
+          <li><strong>Tested, not just written:</strong> 47 data-quality tests pass on SQL Server and on SQLite with identical results; the payment rules agree with an independent Python implementation and with the original Excel check; 12 of 12 injected faults are caught.</li>
+          <li><strong>Power BI:</strong> star-schema model, 15 DAX measures checked against the SQL numbers, and three report pages: overview, cash-flow analysis, payment control.</li>
+          <li><strong>Synthetic data and privacy-safe design:</strong> no employer data, files, field names or proprietary rules.</li>
+        </ul>
+        <p class="note"><strong>Scope.</strong> A control demonstration on synthetic data, run on one machine (SQL Server 2022 Express). Passing the defined checks does not prove that a payment is correct, and it is not a fraud model or a treasury system.</p>
+        <div class="proj-actions">
+          <a class="btn" href="sql-powerbi.html">View SQL &amp; Power BI extension</a>
+        </div>
+      </div>
+      <div class="proj-actions">
+        <a class="btn" href="case-study.html">View Case Study</a>
+        <a class="btn ghost" href="source-code.html">View Source Code</a>
+        <a class="btn ghost" href="downloads/Treasury_CashFlow_Automation_Demo.xlsx" download>Download cash-flow demo (.xlsx)</a>
+        <a class="btn ghost" href="downloads/FX_Payment_Control_Demo.xlsx" download>Download FX control demo (.xlsx)</a>
+        <a class="btn ghost" href="downloads/Treasury_Technology_Finance_Transformation_One_Page_Summary.pdf" download>One-page summary (PDF)</a>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="project" id="project-cash-models" aria-labelledby="p2-title">
+      <span class="tag">Project 2 · Configurable Excel models</span>
+      <h3 id="p2-title">Cash Flow &amp; Cash Conversion Cycle Models: single entity and group</h3>
+      <p>Two formula-driven Excel models on synthetic data: one entity with customer-level detail, and a multi-business-unit group built on the same logic. Customers, suppliers, business units and segments are configuration lists, so the structure can grow or shrink without editing formulas.</p>
+      <div class="facts">
+        <div><h4>Business problem</h4><p>Cash reporting often lives in copy-pasted workbooks: layouts drift, the gap between profit and cash hides in a plug, and DSO moves without anyone knowing which customers caused it.</p></div>
+        <div><h4>My role</h4><p>I defined the cash-flow logic, reconciliations and test cases, then validated the generated models across different configurations.</p></div>
+        <div><h4>Single entity</h4>
+          <ul class="tight">
+            <li>One ledger holds feed and calculation; direct and indirect cash flow, cash conversion cycle, rolling 12-month cycle, variance flags and a dashboard are formulas on it.</li>
+            <li>Collections and payments are derived per customer and per supplier; AR and AP sheets show balances and customer DSO, and a DSO analysis splits the change into a collection effect and a mix effect per customer.</li>
+          </ul></div>
+        <div><h4>Group</h4>
+          <ul class="tight">
+            <li>Identical template per business unit; segment and group sheets add the same cell of their members.</li>
+            <li>One output block per unit, side by side on the same sheets, with identical formulas; internal flows cancel by construction.</li>
+          </ul></div>
+        <div><h4>Control design</h4><p>Eight (single entity) and ten (group) built-in reconciliations, all passing: closing cash against the ledger, the indirect-method balancing row at zero in every month and version, indirect against direct operating cash flow, and group sums against their parts.</p></div>
+        <div><h4>Tested configurations</h4><p>Single entity: 3, 10 and 24 customers, one to twelve actual months. Group: 4, 8 and 11 business units with zero to three segments. Every configuration passed all checks.</p></div>
+      </div>
+      <div class="shots two">
+        <figure><img src="assets/img/cash_single_dashboard.png" alt="Dashboard of the single-entity model with KPI cards for closing cash, operating cash flow, free cash flow, cash cycle, DSO and DIO, monthly cash and cycle tables and charts." loading="lazy" width="1300" height="1196"><figcaption>Single-entity dashboard (synthetic data).</figcaption></figure>
+        <figure><img src="assets/img/cash_group_direct.png" alt="Direct cash-flow block of the group total with collections and payments per business unit, operating cash flow, free cash flow and closing cash by month." loading="lazy" width="1400" height="611"><figcaption>Group direct cash-flow block: current-year months with actual and forecast flags (synthetic data).</figcaption></figure>
+      </div>
+      <p class="note">Built independently with synthetic data to demonstrate transferable cash-flow modelling, control and automation capabilities developed through professional treasury experience.</p>
+      <div class="proj-actions">
+        <a class="btn" href="downloads/cash_models/Case_Study_Cash_Models.pdf" download>Case study (PDF)</a>
+        <a class="btn ghost" href="downloads/cash_models/CF_Single_Entity_Generic.xlsx" download>Single-entity model (.xlsx)</a>
+        <a class="btn ghost" href="downloads/cash_models/CF_Group_Model_Generic.xlsx" download>Group model (.xlsx)</a>
+      </div>
+    </article>    <!-- Project 3 -->
+    <article class="project" id="project-macro" aria-labelledby="p3-title">
+      <span class="tag">Project 3 · Application case study</span>
+      <h3 id="p3-title">Macro Quant Desk</h3>
+      <p>An English-language cross-asset research terminal built with Streamlit and Plotly. It is decision support, not an automated trading system, a forecast or investment advice.</p>
+      <div class="facts">
+        <div><h4>What it shows</h4>
+          <ul class="tight">
+            <li>Index performance and drawdowns</li>
+            <li>Market breadth</li>
+            <li>Trend participation against 50- and 200-day averages</li>
+            <li>Rates (Treasury curve) and a U.S. dollar proxy</li>
+            <li>Relative rotation graphs (RRG)</li>
+          </ul></div>
+        <div><h4>Data and controls</h4><p>Automatic data fetching from external public sources (Yahoo Finance, FRED) with caching. Missing or stale observations stay visible instead of being filled with synthetic values.</p></div>
+      </div>
+      <figure><img src="assets/img/macro_quant_desk.png" alt="Macro Quant Desk briefing screen with index tiles, drawdown measures, a risk-lock alert, module tabs and a daily quantitative diagnostic." loading="lazy" width="1440" height="900"><figcaption>Briefing screen of the deployed application.</figcaption></figure>
+      <div class="proj-actions">
+        <a class="btn" data-link="MACRO_QUANT_LIVE_URL" hidden>Live Demo</a>
+        <a class="btn ghost" data-link="MACRO_QUANT_REPO_URL" hidden>Source Code</a>
+      </div>
+      <p class="note">The application uses public market-data sources with caching and explicit missing-data handling. Public-source data may be delayed or revised.</p>
+    </article>
+
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <h2>Selected Impact</h2>
+    <p class="lead">Treasury Technology &amp; Finance Transformation Portfolio. All figures are author estimates.</p>
+    <div class="grid g4">
+      <div class="stat"><div class="num">5–6 h → &lt;30 min</div><div class="lab">Cash-flow update, per cycle (twice a month)</div><span class="est">Estimated</span></div>
+      <div class="stat"><div class="num">~2 h → ~5 min</div><div class="lab">Bank-statement processing</div><span class="est">Estimated</span></div>
+      <div class="stat"><div class="num">~8 h / month</div><div class="lab">Foreign-currency payment review</div><span class="est">Estimated</span></div>
+      <div class="stat"><div class="num">~19–21 h / month</div><div class="lab">Combined recurring impact (components overlap)</div><span class="est">Estimated</span></div>
+    </div>
+    <p class="note" style="margin-top:1.4rem">Estimated by the author based on before-and-after task time and operating frequency. Scope and methodology are described in the project documentation.</p>
+  </div>
+</section>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <h2>How I Work</h2>
+    <p class="lead">I start with the treasury problem, make the control logic explicit, then validate the automated result against defined acceptance criteria.</p>
+    <ol class="steps">
+      <li><strong>Define the business problem</strong><br>Start from the operational pain point and who relies on the result.</li>
+      <li><strong>Translate rules into requirements</strong><br>Turn how the work is actually done into explicit, testable rules.</li>
+      <li><strong>Design the control and data flow</strong><br>Define what stops the process, what is flagged and what a person must confirm.</li>
+      <li><strong>Implement and review</strong><br>Use appropriate tools, including AI-assisted coding where useful, then review the logic and output.</li>
+      <li><strong>Test calculations and edge cases</strong><br>Test changed headers, empty inputs, long identifiers, shorter periods and reconciliation breaks.</li>
+      <li><strong>Validate the delivered result</strong><br>Accept the output against expected results and document the limits.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="grid g2">
+      <div class="card"><h3>Background</h3>
+        <ul class="tight">
+          <li>Master of Economics, Kobe University</li>
+          <li>Treasury and finance-transformation experience across a parent company and six subsidiaries</li>
+          <li>Oracle ERP Financials: AP, AR and GL; requirements, testing and UAT</li>
+        </ul></div>
+      <div class="card"><h3>Working across borders</h3>
+        <ul class="tight">
+          <li>Coordination across Japan, China, Taiwan and Thailand</li>
+          <li>Mandarin Chinese; Japanese (JLPT N1); English business correspondence</li>
+          <li>Chinese–Japanese business translation</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="lead">Open to Corporate Treasury, Cash and Liquidity Management, Treasury Technology, Finance Systems and Finance Transformation roles.</p>
+    <div class="actions" data-hide-if-empty>
+      <a class="btn" data-link="EMAIL_ADDRESS" hidden>Email</a>
+      <a class="btn ghost" data-link="LINKEDIN_URL" hidden>LinkedIn</a>
+      <a class="btn ghost" data-link="GITHUB_PROFILE_URL" hidden>GitHub</a>
+      <a class="btn ghost" data-link="RESUME_FILE" hidden>Resume</a>
+    </div>
+    <noscript><p>Contact links are loaded from <code>config.js</code> and need JavaScript.</p></noscript>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="year">2026</span> Xuanlin Yu. Portfolio projects use synthetic data and demonstrate transferable treasury, control and automation methods.</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

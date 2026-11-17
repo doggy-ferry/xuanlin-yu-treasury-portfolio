@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treasury SQL and Power BI Analytics — cash flow and FX payment control</title>
+<meta name="description" content="A SQL data layer and a three-page Power BI report built on two Excel finance automations: Actual vs Forecast cash flow and rule-based FX payment control, on synthetic data, with 47 automated tests on SQL Server and SQLite.">
+<meta property="og:title" content="Treasury SQL and Power BI Analytics">
+<meta property="og:description" content="A tested SQL data layer and Power BI model for cash-flow variance and FX payment controls using synthetic data.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="page-head"><div class="wrap">
+  <p><a href="index.html#project-treasury">← Back to portfolio</a></p>
+  <h1>Treasury SQL and Power BI Analytics</h1>
+  <p>Completed Treasury SQL and Power BI Analytics Extension · cash flow forecast and FX payment control</p>
+</div></header>
+<main id="main" class="wrap doc" style="padding-top:24px;padding-bottom:56px">
+
+<p class="note"><strong>Synthetic data.</strong> All data is fully synthetic, with generic fields and rule sets designed to demonstrate transferable cash-flow and payment-control architecture.</p>
+
+<h2>What it adds to the two Excel tools</h2>
+<p>The cash-flow forecast workbook and the FX payment pre-control workbook keep their rules inside formulas, which are hard to test and hard to reuse. This extension moves the same logic into SQL, tests it, and presents it in Power BI, without changing either workbook. It answers two questions: how far were past cash forecasts from what happened, and which payments should be held for confirmation before they are released.</p>
+
+<h2>What has been checked</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Component</th><th>State</th></tr></thead>
+<tbody>
+<tr><td>SQL on Microsoft SQL Server 2022 Express</td><td>Run. 47 of 47 data-quality tests pass.</td></tr>
+<tr><td>SQL on SQLite (portable copy)</td><td>Run. 47 of 47 pass; results identical to SQL Server.</td></tr>
+<tr><td>Payment rules vs an independent implementation</td><td>All 150 payments agree between the SQL and a second implementation written in Python.</td></tr>
+<tr><td>Payment rules vs the original Excel check</td><td>All 34 payments that come from the workbook agree (one documented difference: a text-stored account number that Excel matches as a number).</td></tr>
+<tr><td>Fault injection</td><td>12 of 12 deliberately injected faults are caught by the tests; the first run found one real gap, now covered by an extra test.</td></tr>
+<tr><td>Power BI model and measures</td><td>Star-schema model with 15 DAX measures, checked on Power BI Desktop's own engine against the SQL numbers (28 of 28 checks).</td></tr>
+<tr><td>Power BI report</td><td>Three pages built and saved: Treasury Overview, Cash Flow Analysis, Payment Control. The saved file was read back and matches the build guide.</td></tr>
+</tbody></table></div>
+
+<h2>Data flow</h2>
+<ol class="steps">
+<li>Two Excel workbooks are the specification; their structure and rules are read, not changed.</li>
+<li>A seeded generator produces 12 months of synthetic cash flow and 150 payment instructions, with a few planted, explainable defects.</li>
+<li>Staging tables keep the raw text; cleaning rejects bad rows with a reason instead of dropping them.</li>
+<li>Star-schema tables with keys, constraints and a stated grain for every table.</li>
+<li>Four views: daily cash position, Actual vs Forecast variance, payment control, exception summary.</li>
+<li>Power BI reads the views and adds measures only.</li>
+</ol>
+
+<h2>Cash flow: Actual and Forecast</h2>
+<ul>
+<li>Twelve months, four fictitious entities, five currencies; 1,323 cash-flow lines (661 Actual, 662 Forecast).</li>
+<li>Amounts in different currencies are never added in the original currency; cross-currency totals use the JPY amount.</li>
+<li>Daily cash position with a window-function running balance; closing cash reconciles to the 745 million JPY balance in the Excel summary.</li>
+<li>Actual vs Forecast variance by month, entity, currency and category, with a safe percentage and a status (within range, large variance, not realised, unplanned). Five planted events, such as a customer paying 55 per cent, are all detected.</li>
+<li>Six dirty staging rows (duplicates, an unknown currency, a missing amount, an impossible date, an unknown entity) are rejected with a reason.</li>
+</ul>
+
+<h2>FX payment control</h2>
+<ul>
+<li>Each payment is linked to its invoice (the request), the ERP schedule (the plan) and the vendor bank history.</li>
+<li>Twenty rules run in SQL: account changed, new beneficiary, SWIFT and bank checks, IBAN country and length, currency or code never used, ERP match, invoice total and breakdown.</li>
+<li>A payment can fail several rules; all are stored, and one primary exception chosen with <code>ROW_NUMBER()</code> drives a red, amber or green risk level.</li>
+<li>150 payments: 22 High risk (hold for confirmation), 19 Review required, 109 Passed the defined checks. "Passed" means no defined rule failed, not that a payment is proven correct.</li>
+<li>A payment whose vendor cannot be matched stays visible (<code>LEFT JOIN</code>); an inner join would have dropped three of them silently.</li>
+</ul>
+
+<h2>Power BI</h2>
+<p>A star schema: dimensions for date, entity, currency, vendor, category and exception type, and three fact tables; every relationship is many-to-one with a single filter direction and no fact table is joined to another.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Page</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td>Treasury Overview</td><td>KPI strip (closing cash, Actual, Forecast, variance, payments, exceptions), Actual vs Forecast trend, cash position by entity, exceptions by category; entity, currency and month filters.</td></tr>
+<tr><td>Cash Flow Analysis</td><td>Monthly Actual vs Forecast, variance waterfall by category, cash flow by category, cash position by entity over time, currency breakdown, transaction detail.</td></tr>
+<tr><td>Payment Control</td><td>Payment amount by currency, exceptions by category and by risk level, check-result summary, payment detail with red, amber and green risk colours.</td></tr>
+</tbody></table></div>
+
+<h2>Reference scenario (synthetic)</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Measure</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Closing cash position</td><td>745,000,000 JPY</td></tr>
+<tr><td>Total Actual vs Total Forecast (12 months, net)</td><td>249,956,347 vs 270,480,000 JPY; variance -20,523,653 (-7.6 %)</td></tr>
+<tr><td>Payments / exceptions / High risk / Passed</td><td>150 / 41 (27.3 %) / 22 / 109</td></tr>
+<tr><td>Payment value (JPY at the planning rate)</td><td>317,121,190</td></tr>
+</tbody></table></div>
+
+<h2>Limits, stated plainly</h2>
+<ul>
+<li>Scope: the generated cash flows and rule-based payment exceptions demonstrate control logic; outputs remain subject to human review.</li>
+<li>One static planning rate per currency for forecasts and a monthly rate for actuals; not a valuation method.</li>
+<li>No full cash-flow statement and no operating, investing or financing split.</li>
+<li>The T-SQL was run on SQL Server 2022 Express only. The Power BI file and the generated data files are kept out of the public download folder.</li>
+</ul>
+
+<h2>AI use</h2>
+<p>AI tools were used to accelerate implementation and documentation. Business requirements, treasury logic, control design, testing and final validation remained under the project owner's responsibility.</p>
+
+<h2>Files</h2>
+<ul>
+<li><a href="downloads/sql_powerbi/README.md">Overview</a> · <a href="downloads/sql_powerbi/docs/architecture.md">Architecture</a> · <a href="downloads/sql_powerbi/docs/business_logic.md">Business logic</a> · <a href="downloads/sql_powerbi/tests/test_results.md">Test results</a></li>
+<li>SQL Server scripts, in run order:
+  <a href="downloads/sql_powerbi/sql/sqlserver/01_create_tables.sql">01 tables</a> ·
+  <a href="downloads/sql_powerbi/sql/sqlserver/02_load_data.sql">02 load</a> ·
+  <a href="downloads/sql_powerbi/sql/sqlserver/03_transform.sql">03 transform</a> ·
+  <a href="downloads/sql_powerbi/sql/sqlserver/04_business_views.sql">04 views</a> ·
+  <a href="downloads/sql_powerbi/sql/sqlserver/05_data_quality_tests.sql">05 tests</a> ·
+  <a href="downloads/sql_powerbi/sql/sqlserver/06_demo_queries.sql">06 demo queries</a></li>
+<li>Power BI: <a href="downloads/sql_powerbi/powerbi/model_specification.md">model</a> · <a href="downloads/sql_powerbi/powerbi/relationship_map.md">relationships</a> · <a href="downloads/sql_powerbi/powerbi/dax_measures.md">15 DAX measures</a> · <a href="downloads/sql_powerbi/powerbi/measures.dax">measures.dax</a> · <a href="downloads/sql_powerbi/powerbi/power_query_m.md">Power Query</a> · <a href="downloads/sql_powerbi/powerbi/report_build_guide.md">report build guide</a> · <a href="downloads/sql_powerbi/powerbi/expected_kpis.csv">reference KPI values</a></li>
+</ul>
+</main>
+<footer><div class="wrap"><p><a href="index.html">Back to portfolio</a></p></div></footer>
+</body>
+</html>

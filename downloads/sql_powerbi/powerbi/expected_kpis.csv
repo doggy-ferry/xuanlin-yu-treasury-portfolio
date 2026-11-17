@@ -1,0 +1,16 @@
+measure,expected_value,unit
+Total Actual,249956347,JPY
+Total Forecast,270480000,JPY
+Forecast Variance,-20523653,JPY
+Forecast Variance %,-0.0759,ratio
+Cash Inflow,4079521277,JPY
+Cash Outflow,-3829564930,JPY
+Net Cash Flow,249956347,JPY
+Closing Cash Position,745000000,JPY
+Payment Count,150,count
+Total Payment Amount Base,317121190,JPY
+Exception Count,41,count
+Exception Rate,0.2733,ratio
+High Risk Count,22,count
+Passed Payment Count,109,count
+Unmatched Vendor Count,3,count

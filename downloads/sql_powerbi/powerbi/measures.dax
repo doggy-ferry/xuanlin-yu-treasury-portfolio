@@ -1,0 +1,134 @@
+// =====================================================================
+// measures.dax  -  the 15 report measures. Single source of truth:
+//   * powerbi/build_model_in_open_report.ps1 loads them into an open Power BI Desktop report
+//   * scripts/build_dax_doc.py writes powerbi/dax_measures.md from the comments below
+//   * scripts/check_dax_fields.py checks that every table[column] and [measure] they use exists
+// Conventions
+//   * Cash-flow amounts are signed: inflow +, outflow -.  Cross-currency totals always use amount_base (JPY).
+//   * Currency, Entity, Date and Category slicers reach fact_cashflow through the star schema; Entity and Date also reach the
+//     other two fact tables. fact_cash_position holds JPY only, so it has no Currency or Category relationship.
+//   * One measure = one meaning. "Net Cash Flow" is read from the daily position table and must equal "Total Actual" read from the
+//     transaction table; the difference is a built-in reconciliation (checked in verify_model_in_open_report.ps1).
+// =====================================================================
+
+// @measure Total Actual
+// purpose: Net Actual cash movement in JPY (inflows minus outflows).
+// logic: SUM(amount_base) of fact_cashflow rows whose scenario is Actual.
+// context: follows Date, Entity, Currency and Category slicers; JPY, so currencies can be added.
+// format: #,0
+Total Actual =
+CALCULATE ( SUM ( fact_cashflow[amount_base] ), fact_cashflow[scenario] = "Actual" )
+
+// @measure Total Forecast
+// purpose: Net Forecast cash movement in JPY, valued at the planning rate.
+// logic: SUM(amount_base) of fact_cashflow rows whose scenario is Forecast.
+// context: same as Total Actual.
+// format: #,0
+Total Forecast =
+CALCULATE ( SUM ( fact_cashflow[amount_base] ), fact_cashflow[scenario] = "Forecast" )
+
+// @measure Forecast Variance
+// purpose: How far Actual ended from Forecast. Negative = less cash than planned.
+// logic: Total Actual - Total Forecast.
+// context: same as Total Actual; both parts see the same filters.
+// format: #,0
+Forecast Variance =
+[Total Actual] - [Total Forecast]
+
+// @measure Forecast Variance %
+// purpose: Variance relative to the size of the forecast.
+// logic: DIVIDE(Forecast Variance, ABS(Total Forecast)); BLANK when the forecast is zero, so there is never a divide-by-zero error.
+// context: same as Total Actual.
+// format: 0.0%
+Forecast Variance % =
+DIVIDE ( [Forecast Variance], ABS ( [Total Forecast] ) )
+
+// @measure Cash Inflow
+// purpose: Actual cash received in JPY (positive rows only).
+// logic: SUM(amount_base) for Actual rows where amount_base > 0.
+// context: same as Total Actual. Pooling and borrowing receipts count as inflow.
+// format: #,0
+Cash Inflow =
+CALCULATE ( SUM ( fact_cashflow[amount_base] ), fact_cashflow[scenario] = "Actual", fact_cashflow[amount_base] > 0 )
+
+// @measure Cash Outflow
+// purpose: Actual cash paid in JPY (negative rows only); shown as a negative number.
+// logic: SUM(amount_base) for Actual rows where amount_base < 0.
+// context: same as Total Actual.
+// format: #,0
+Cash Outflow =
+CALCULATE ( SUM ( fact_cashflow[amount_base] ), fact_cashflow[scenario] = "Actual", fact_cashflow[amount_base] < 0 )
+
+// @measure Net Cash Flow
+// purpose: Net Actual movement taken from the daily cash-position table (reconciles to Total Actual).
+// logic: SUM(net_cash_flow_base) of fact_cash_position.
+// context: follows Date and Entity only (the position table is in JPY and has no currency or category).
+// format: #,0
+Net Cash Flow =
+SUM ( fact_cash_position[net_cash_flow_base] )
+
+// @measure Closing Cash Position
+// purpose: Cash balance at the end of the period in view, all selected entities added up (JPY).
+// logic: closing_balance_base on the LAST date in the current filter context (last day of a month on a month axis, last day of the data on a card).
+// context: follows Date and Entity. A balance is not additive over time, so only the last day is used.
+// format: #,0
+Closing Cash Position =
+VAR LastDay = MAX ( fact_cash_position[full_date] )     -- not "LastDate": that is a DAX function name and the engine rejects it
+RETURN
+    CALCULATE ( SUM ( fact_cash_position[closing_balance_base] ), fact_cash_position[full_date] = LastDay )
+
+// @measure Payment Count
+// purpose: Number of payment instructions in the control run.
+// logic: DISTINCTCOUNT(payment_id) of fact_payment_control.
+// context: follows Date, Entity, Currency, Vendor and Exception slicers.
+// format: #,0
+Payment Count =
+DISTINCTCOUNT ( fact_payment_control[payment_id] )
+
+// @measure Total Payment Amount Base
+// purpose: Value of the payment instructions in JPY at the planning rate.
+// logic: SUM(payment_amount_base).
+// context: same as Payment Count. Original-currency amounts (payment_amount) are shown only next to the currency code and are never summed across currencies.
+// format: #,0
+Total Payment Amount Base =
+SUM ( fact_payment_control[payment_amount_base] )
+
+// @measure Exception Count
+// purpose: Payments that failed at least one defined check (High or Medium risk).
+// logic: Payment Count where risk_level is not Passed.
+// context: same as Payment Count.
+// format: #,0
+Exception Count =
+CALCULATE ( [Payment Count], fact_payment_control[risk_level] <> "Passed" )
+
+// @measure Exception Rate
+// purpose: Share of payments that need attention.
+// logic: DIVIDE(Exception Count, Payment Count).
+// context: same as Payment Count.
+// format: 0.0%
+Exception Rate =
+DIVIDE ( [Exception Count], [Payment Count] )
+
+// @measure High Risk Count
+// purpose: Payments to hold until confirmed (red).
+// logic: Payment Count where risk_level = High.
+// context: same as Payment Count.
+// format: #,0
+High Risk Count =
+CALCULATE ( [Payment Count], fact_payment_control[risk_level] = "High" )
+
+// @measure Passed Payment Count
+// purpose: Payments that passed every defined check (green). Passing the defined checks is not a guarantee that a payment is correct.
+// logic: Payment Count where risk_level = Passed.
+// context: same as Payment Count.
+// format: #,0
+Passed Payment Count =
+CALCULATE ( [Payment Count], fact_payment_control[risk_level] = "Passed" )
+
+// @measure Unmatched Vendor Count
+// purpose: Payments that could not be tied to a vendor in the vendor master. They stay in the report instead of being dropped.
+// logic: Payment Count where vendor_matched_flag = 0.
+// context: same as Payment Count.
+// format: #,0
+Unmatched Vendor Count =
+CALCULATE ( [Payment Count], fact_payment_control[vendor_matched_flag] = 0 )

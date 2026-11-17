@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source Code — Treasury Technology Portfolio</title>
+<meta name="description" content="VBA modules and Power Query scripts from the synthetic-data treasury automation demonstration.">
+<meta property="og:title" content="Treasury Automation Source Code">
+<meta property="og:description" content="Sanitised VBA modules and Power Query scripts showing controls, traceability and maintainable treasury workflow automation.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="page-head"><div class="wrap">
+  <p><a href="index.html#projects">← Back to portfolio</a></p>
+  <h1>Source Code</h1>
+  <p>VBA modules and Power Query scripts for the cash-flow automation demo</p>
+</div></header>
+<main id="main" class="wrap doc" style="padding-top:24px;padding-bottom:56px">
+<p class="note">Sanitised source samples use synthetic data, generic fields and <code>&lt;ROOT_PATH&gt;</code> placeholders. The author defined the business rules, controls and acceptance tests; AI-assisted coding supported implementation and documentation.</p>
+
+<h2>VBA modules (.bas)</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>File</th><th>Responsibility</th></tr></thead>
+<tbody>
+<tr><td><a href="downloads/source_code/modCommon.bas">modCommon.bas</a></td><td>Configuration read, workbook lookup, latest file, timestamps, header location. <code>CLEAR_LEFTOVER</code> defaults to False.</td></tr>
+<tr><td><a href="downloads/source_code/modARImport.bas">modARImport.bas</a></td><td>AR source checks, company-code check, header comparison, value import, formula extension</td></tr>
+<tr><td><a href="downloads/source_code/modAPImport.bas">modAPImport.bas</a></td><td>Query refresh, row and header checks, value import, formula extension, pivot refresh</td></tr>
+<tr><td><a href="downloads/source_code/modBankImport.bas">modBankImport.bas</a></td><td>Query refresh, first/last header checks, value import, formula extension, timestamp, pivot refresh</td></tr>
+</tbody></table></div>
+
+<h2>Power Query scripts (.pq)</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>File</th><th>Responsibility</th></tr></thead>
+<tbody>
+<tr><td><a href="downloads/source_code/Query_AP.pq">Query_AP.pq</a></td><td>Latest AP Payment Detail text file, type normalisation, Source File column</td></tr>
+<tr><td><a href="downloads/source_code/Query_BANK.pq">Query_BANK.pq</a></td><td>Combines bank files, extracts the account key as text, keeps the source file name</td></tr>
+<tr><td><a href="downloads/source_code/Query_AR.pq">Query_AR.pq</a></td><td>Latest AR Balance Report, restores sparse XML cells, cleans dates and amounts</td></tr>
+</tbody></table></div>
+
+<p><a href="downloads/source_code/README.txt">README.txt</a> lists the implemented controls and the boundaries of the code.</p>
+<p>Use: import the .bas modules into a reviewed .xlsm copy; paste the .pq scripts into the Power Query Advanced Editor and adapt <code>&lt;ROOT_PATH&gt;</code> and the generic fields to your schema.</p>
+</main>
+<footer><div class="wrap"><p><a href="index.html">Back to portfolio</a></p></div></footer>
+</body>
+</html>

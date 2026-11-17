@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Study — Treasury Technology &amp; Finance Transformation Portfolio</title>
+<meta name="description" content="Case study: foreign-currency pre-payment control and actual/forecast cash-flow automation, built on synthetic data.">
+<meta property="og:title" content="Treasury Technology &amp; Finance Transformation Case Study">
+<meta property="og:description" content="Foreign-currency payment control and actual/forecast cash-flow automation, with explicit controls and validation.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="page-head"><div class="wrap">
+  <p><a href="index.html#projects">← Back to portfolio</a></p>
+  <h1>Treasury Technology &amp; Finance Transformation Portfolio</h1>
+  <p>Foreign-currency payment control and actual/forecast cash-flow automation</p>
+</div></header>
+<main id="main" class="wrap doc" style="padding-top:24px;padding-bottom:56px">
+
+<p class="note"><strong>Provenance.</strong> Independently designed and implemented on synthetic data. The author defined the business rules, data design and acceptance tests; AI-assisted coding supported implementation and documentation.</p>
+
+<h2>1. Foreign-currency pre-payment control</h2>
+<p>The main value is moving an irreversible payment risk to before the payment. Each payment is laid out on one row so a reviewer can see the facts, the matches, the reason for any exception and the next action.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Evidence block</th><th>Generic source</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>Payment facts</td><td>Payment instruction</td><td>Date, currency, amount, beneficiary, account/IBAN, bank, SWIFT, country, purpose code</td></tr>
+<tr><td>History consistency</td><td>Beneficiary history</td><td>Spot sensitive changes in account, SWIFT, bank name, bank country or beneficiary name</td></tr>
+<tr><td>Format control</td><td>IBAN / country rules</td><td>Country code and digit count; account and IBAN kept as text</td></tr>
+<tr><td>ERP evidence</td><td>AP Payment Detail</td><td>Totals and counts by account, currency and payment date; no-match and purpose-code differences</td></tr>
+<tr><td>Invoice allocation</td><td>Invoice detail</td><td>Purpose codes and amounts checked against the invoice total through the Vendor Reference Bridge</td></tr>
+<tr><td>Manual handling</td><td>Reviewer note / priority</td><td>Critical, Review or OK routing with a note for supplementary evidence</td></tr>
+</tbody></table></div>
+
+<h2>Vendor Reference Bridge</h2>
+<p>If a long account number is truncated, reformatted or converted to a number by Excel, joining AP and invoices on the account can fail. The bridge first obtains a generic supplier reference key from the account, currency and payment-date combination that can still be identified, and then totals the invoice amounts on that key. It is an explainable, reviewable alternative join path, not a way of skipping a control.</p>
+
+<h2>Exception routing</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Level</th><th>Examples</th><th>Handling principle</th></tr></thead>
+<tbody>
+<tr><td>Critical</td><td>Account changed, SWIFT missing or different, IBAN country mismatch, no ERP match, purpose-code mismatch</td><td>Must be resolved before payment; an account change needs independent confirmation</td></tr>
+<tr><td>Review</td><td>New beneficiary, bank-name difference, minor name/country/city difference, new currency or purpose code, invoice-split difference</td><td>Gather supporting information, judge visually, or update the history master</td></tr>
+<tr><td>OK</td><td>No contradiction found within the data obtained and the defined rules</td><td>Continue the standard review; it does not prove the source data is true</td></tr>
+</tbody></table></div>
+
+<h2>2. Actual/forecast cash-flow automation</h2>
+<p>Reading the sources and maintaining the target workbook are kept separate. Power Query obtains, merges and shapes the sources. VBA handles the Excel objects: locating headers, pasting values, extending formulas, writing timestamps and refreshing pivots. Before the cutoff date the report takes actuals; after it, forecast.</p>
+<ol>
+<li>A Setting sheet holds the generic root path, target workbook and sheet keys, key headers, company code and date/time cells.</li>
+<li>Query_AP, Query_BANK and Query_AR read the latest or combined files and keep account identifiers as text.</li>
+<li>The macro refreshes the queries and stops if a workbook, sheet, query table or required setting is missing, or if a query returns no data.</li>
+<li>It locates the target area by header, clears old values and pastes values only, keeping the target formatting.</li>
+<li>It extends adjacent formula columns to the last row of the new data; it writes timestamps and refreshes pivots where coded.</li>
+<li>The CashFlow sheet switches between actual and forecast at the cutoff and shows a control difference between the components and the total.</li>
+</ol>
+
+<h2>Controls that exist in the code</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Control</th><th>Where</th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td>Header comparison</td><td>AR / AP / BANK macros</td><td>Stops or raises an error when headers are missing or reordered, or first/last headers differ</td></tr>
+<tr><td>Row check</td><td>AP / BANK query import</td><td>Stops when a query returns no data or only empty rows</td></tr>
+<tr><td>Company-code check</td><td>AR macro</td><td>Stops when the source company code differs from the configured one</td></tr>
+<tr><td>Formula-column extension</td><td>AR / AP / BANK macros</td><td>Keeps the adjacent formula template and fills it down to the new last row</td></tr>
+<tr><td>Pivot refresh</td><td>AP / BANK macros</td><td>Refreshes the target pivot tables after pasting</td></tr>
+<tr><td>Date/time stamp</td><td>AR / BANK macros</td><td>Written from the source label, file name or file modified time; AP keeps the source file name for traceability</td></tr>
+</tbody></table></div>
+
+<h2>Design decisions and known limits</h2>
+<ul>
+<li>The AP header comparison intentionally runs to <code>nSrc - 1</code>, because Power Query appends a final <code>Source File</code> column for traceability; this is commented in the code.</li>
+<li><code>CLEAR_LEFTOVER</code> defaults to <code>False</code>. If the current month has fewer rows than the prior month, residual formula rows below the current range may remain in a pivot-table source. Change it only after testing the target workbook's formula and pivot boundaries.</li>
+<li>Source layout or header changes need maintenance and re-acceptance. Excel suits the current scale; multi-user, permission and logging needs would call for a database or service.</li>
+<li>Automation boundary: the controls identify contradictions covered by the defined rules. They cannot prove that source data is true, complete or untampered.</li>
+</ul>
+
+<h2>3. Estimated impact and basis</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Task</th><th>Before</th><th>After</th><th>Estimate</th></tr></thead>
+<tbody>
+<tr><td>Foreign-currency payment review</td><td>Item-by-item manual comparison across sources</td><td>Exceptions routed centrally</td><td>About 8 hours per month</td></tr>
+<tr><td>Cash-flow update</td><td>About 5–6 hours per cycle, twice a month</td><td>Main update under 30 minutes</td><td>About 1.5 working days per month</td></tr>
+<tr><td>Bank-statement processing</td><td>About 2 hours</td><td>About 5 minutes</td><td>Single before/after duration</td></tr>
+<tr><td>FX-related checks</td><td>Scattered manual checks</td><td>Rule-based comparison</td><td>About 2 hours per month</td></tr>
+<tr><td><strong>Combined</strong></td><td colspan="2">Repetitive import and item-by-item checks → automated import and exception review</td><td><strong>About 19–21 hours per month</strong>; components overlap and are not simply added</td></tr>
+</tbody></table></div>
+<p class="note"><strong>Estimated by the author based on before-and-after task time and operating frequency. Scope and methodology are described in the project documentation.</strong> These are the author's own estimates, not audited or externally verified figures.</p>
+
+<h2>Files</h2>
+<ul>
+<li><a href="downloads/Treasury_Technology_Finance_Transformation_One_Page_Summary.pdf">One-page summary (PDF)</a></li>
+<li><a href="downloads/Treasury_CashFlow_Automation_Demo.xlsx">Cash-flow demo workbook</a> and <a href="downloads/FX_Payment_Control_Demo.xlsx">FX payment control demo workbook</a> (synthetic data)</li>
+<li><a href="source-code.html">Source code: VBA modules and Power Query scripts</a></li>
+</ul>
+</main>
+<footer><div class="wrap"><p><a href="index.html">Back to portfolio</a></p></div></footer>
+</body>
+</html>
