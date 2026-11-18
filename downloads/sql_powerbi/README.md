@@ -17,7 +17,7 @@ These are the reading copies of the project behind the page `sql-powerbi.html`: 
 
 ## What is not here
 
-The generated data files, the helper scripts that read the two source workbooks, the field mapping to those workbooks, and the Power BI report file itself are kept out of this public folder. The SQL scripts therefore show the logic; running them needs the full project.
+The generated data files, the helper scripts that read the two source workbooks, the field mapping to those workbooks, and the Power BI report file itself are kept out of this public folder. The SQL scripts therefore show the logic; running them needs the full project. References in these reading copies to helper scripts, SQLite copies, generated model-check outputs or full-project tests belong to the full private build and are intentionally not included in this public download.
 
 ## Results
 

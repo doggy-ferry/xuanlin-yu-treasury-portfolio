@@ -12,7 +12,7 @@ window.SITE_CONFIG = {
   RESUME_FILE: "downloads/Xuanlin_Yu_CV.pdf",
 
   // ---- Macro Quant Desk -------------------------------------------------
-  // Keep hidden until the live app and repository ownership are re-verified.
+  // The live app and repository URLs are approved for public display.
   MACRO_QUANT_LIVE_URL: "https://xuanlin-macro-quant-desk.streamlit.app/",
   MACRO_QUANT_REPO_URL: "https://github.com/doggy-ferry/macro-quant-desk-portfolio"
 
