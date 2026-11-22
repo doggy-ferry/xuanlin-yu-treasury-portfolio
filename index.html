@@ -29,6 +29,7 @@
       </ul>
     </nav>
   </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
 </header>
 
 <main id="main">
@@ -38,7 +39,8 @@
     <p class="role">Treasury Automation | Cash &amp; Liquidity Management | Finance Transformation</p>
     <p class="value">I translate treasury and finance logic into controlled, auditable and maintainable automation.</p>
     <p class="sub">Hands-on liquidity, cash-flow, FX, payment and control experience across a parent company and six subsidiaries, combined with Oracle ERP Financials (AP, AR, GL), UAT and tested Excel, Power Query and VBA workflows.</p>
-    <ul class="caps" aria-label="Professional capabilities">
+    <span class="hero-projects-label" id="caps-label">Core capabilities</span>
+    <ul class="caps" aria-labelledby="caps-label">
       <li>Cash &amp; liquidity management</li>
       <li>Cash-flow forecasting</li>
       <li>FX &amp; payment controls</li>
@@ -47,10 +49,10 @@
     </ul>
     <div class="hero-projects" aria-label="Portfolio project shortcuts">
       <span class="hero-projects-label">Portfolio projects</span>
-      <a class="project-pill" href="#project-treasury">Treasury Transformation <span>Flagship PJ 1</span></a>
-      <a class="project-pill" href="#project-cash-models">Cash-Flow Models <span>PJ 2</span></a>
-      <a class="project-pill" href="#project-treasury-api">Treasury Control API <span>PJ 3</span></a>
-      <a class="project-pill" href="#project-macro">Macro Quant Desk <span>PJ 4</span></a>
+      <a class="project-pill p1 is-flagship" href="#project-treasury">Treasury Transformation <span>Flagship PJ 1</span></a>
+      <a class="project-pill p2" href="#project-cash-models">Cash-Flow Models <span>PJ 2</span></a>
+      <a class="project-pill p3" href="#project-treasury-api">Treasury Control API <span>PJ 3</span></a>
+      <a class="project-pill p4" href="#project-macro">Macro Quant Desk <span>PJ 4</span></a>
     </div>
     <div class="actions">
       <a class="btn" href="#projects">View featured projects</a>
@@ -81,9 +83,16 @@
   <div class="wrap">
     <h2>Featured Projects</h2>
     <p class="lead">Four projects, ordered by relevance to treasury technology and finance transformation.</p>
+    <nav class="proj-rail" aria-label="Jump to project">
+      <a class="p1" href="#project-treasury"><b>PJ 1</b><span>Treasury Transformation</span></a>
+      <a class="p2" href="#project-cash-models"><b>PJ 2</b><span>Cash-Flow Models</span></a>
+      <a class="p3" href="#project-treasury-api"><b>PJ 3</b><span>Control API</span></a>
+      <a class="p4" href="#project-macro"><b>PJ 4</b><span>Macro Quant Desk</span></a>
+    </nav>
 
     <!-- Project 1 -->
-    <article class="project flagship" id="project-treasury" aria-labelledby="p1-title">
+    <article class="project flagship p1" id="project-treasury" aria-labelledby="p1-title">
+      <span class="proj-num" aria-hidden="true">PJ 1</span>
       <span class="tag">Flagship project</span>
       <h3 id="p1-title">Treasury Technology &amp; Finance Transformation Portfolio</h3>
       <p>Two reusable demonstrations built on synthetic data: a foreign-currency pre-payment control and an actual/forecast cash-flow automation framework.</p>
@@ -145,7 +154,8 @@
     </article>
 
     <!-- Project 2 -->
-    <article class="project" id="project-cash-models" aria-labelledby="p2-title">
+    <article class="project p2" id="project-cash-models" aria-labelledby="p2-title">
+      <span class="proj-num" aria-hidden="true">PJ 2</span>
       <span class="tag">Project 2 · Configurable Excel models</span>
       <h3 id="p2-title">Cash Flow &amp; Cash Conversion Cycle Models: single entity and group</h3>
       <p>Two formula-driven Excel models on synthetic data: one entity with customer-level detail, and a multi-business-unit group built on the same logic. Customers, suppliers, business units and segments are configuration lists, so the structure can grow or shrink without editing formulas.</p>
@@ -178,7 +188,8 @@
     </article>
 
     <!-- Project 3 -->
-    <article class="project" id="project-treasury-api" aria-labelledby="p3-title">
+    <article class="project p3" id="project-treasury-api" aria-labelledby="p3-title">
+      <span class="proj-num" aria-hidden="true">PJ 3</span>
       <span class="tag">Project 3 · Treasury controls API</span>
       <h3 id="p3-title">Treasury FX Payment Control API</h3>
       <p>REST API built with FastAPI and Pydantic to apply rule-based pre-payment controls and return PASS, REVIEW or BLOCK decisions for synthetic payment batches. It integrates ECB reference rates through HTTPX and exposes auditable exception findings without authorizing or executing payments. The Dockerized service is covered by 31 automated tests (approximately 99% coverage), validated in GitHub Actions and deployed on Render.</p>
@@ -200,7 +211,8 @@
     </article>
 
     <!-- Project 4 -->
-    <article class="project" id="project-macro" aria-labelledby="p4-title">
+    <article class="project p4" id="project-macro" aria-labelledby="p4-title">
+      <span class="proj-num" aria-hidden="true">PJ 4</span>
       <span class="tag">Project 4 · Application case study</span>
       <h3 id="p4-title">Macro Quant Desk</h3>
       <p>An English-language cross-asset research terminal built with Streamlit and Plotly. It is decision support, not an automated trading system, a forecast or investment advice.</p>
@@ -295,6 +307,8 @@
     <p>© <span id="year">2026</span> Xuanlin Yu. Portfolio projects use synthetic data and demonstrate transferable treasury, control and automation methods.</p>
   </div>
 </footer>
+
+<a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <script src="config.js"></script>
 <script src="script.js"></script>
