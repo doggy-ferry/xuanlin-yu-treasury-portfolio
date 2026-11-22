@@ -73,7 +73,7 @@
 <section class="alt" id="projects">
   <div class="wrap">
     <h2>Featured Projects</h2>
-    <p class="lead">Three projects, ordered by relevance to treasury technology and finance transformation.</p>
+    <p class="lead">Four projects, ordered by relevance to treasury technology and finance transformation.</p>
 
     <!-- Project 1 -->
     <article class="project flagship" id="project-treasury" aria-labelledby="p1-title">
@@ -168,10 +168,34 @@
         <a class="btn ghost" href="downloads/cash_models/CF_Single_Entity_Generic.xlsx" download>Single-entity model (.xlsx)</a>
         <a class="btn ghost" href="downloads/cash_models/CF_Group_Model_Generic.xlsx" download>Group model (.xlsx)</a>
       </div>
-    </article>    <!-- Project 3 -->
-    <article class="project" id="project-macro" aria-labelledby="p3-title">
-      <span class="tag">Project 3 · Application case study</span>
-      <h3 id="p3-title">Macro Quant Desk</h3>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="project" id="project-treasury-api" aria-labelledby="p3-title">
+      <span class="tag">Project 3 · Treasury controls API</span>
+      <h3 id="p3-title">Treasury FX Payment Control API</h3>
+      <p>REST API built with FastAPI and Pydantic to apply rule-based pre-payment controls and return PASS, REVIEW or BLOCK decisions for synthetic payment batches. It integrates ECB reference rates through HTTPX and exposes auditable exception findings without authorizing or executing payments. The Dockerized service is covered by 31 automated tests (approximately 99% coverage), validated in GitHub Actions and deployed on Render.</p>
+      <ul class="tech-stack" aria-label="Technology stack">
+        <li>Python</li>
+        <li>FastAPI</li>
+        <li>Pydantic</li>
+        <li>HTTPX</li>
+        <li>Pytest</li>
+        <li>Docker</li>
+        <li>GitHub Actions</li>
+        <li>Render</li>
+      </ul>
+      <p class="note"><strong>Synthetic data only.</strong> Rule-based exception identification; does not authorize or execute payments.</p>
+      <div class="proj-actions">
+        <a class="btn" data-link="TREASURY_API_DOCS_URL" hidden>Live API Docs</a>
+        <a class="btn ghost" data-link="TREASURY_API_REPO_URL" hidden>Source Code</a>
+      </div>
+    </article>
+
+    <!-- Project 4 -->
+    <article class="project" id="project-macro" aria-labelledby="p4-title">
+      <span class="tag">Project 4 · Application case study</span>
+      <h3 id="p4-title">Macro Quant Desk</h3>
       <p>An English-language cross-asset research terminal built with Streamlit and Plotly. It is decision support, not an automated trading system, a forecast or investment advice.</p>
       <div class="facts">
         <div><h4>What it shows</h4>

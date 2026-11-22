@@ -73,6 +73,8 @@ figure img{width:100%}
 figcaption{font-size:.82rem;color:var(--muted);padding:.5rem .8rem;border-top:1px solid var(--line);background:var(--soft)}
 .note{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:.8rem 1rem;font-size:.92rem;margin:1rem 0}
 .proj-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:1rem}
+.tech-stack{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:1rem 0;padding:0}
+.tech-stack li{background:var(--soft);border:1px solid var(--line);border-radius:999px;color:var(--navy-2);font-size:.84rem;font-weight:600;padding:.2rem .65rem}
 
 /* impact */
 .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}

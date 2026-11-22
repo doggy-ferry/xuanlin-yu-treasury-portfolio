@@ -14,6 +14,10 @@ window.SITE_CONFIG = {
   // ---- Macro Quant Desk -------------------------------------------------
   // The live app and repository URLs are approved for public display.
   MACRO_QUANT_LIVE_URL: "https://xuanlin-macro-quant-desk.streamlit.app/",
-  MACRO_QUANT_REPO_URL: "https://github.com/doggy-ferry/macro-quant-desk-portfolio"
+  MACRO_QUANT_REPO_URL: "https://github.com/doggy-ferry/macro-quant-desk-portfolio",
+
+  // ---- Treasury FX Payment Control API ---------------------------------
+  TREASURY_API_DOCS_URL: "https://treasury-fx-payment-control-api.onrender.com/docs",
+  TREASURY_API_REPO_URL: "https://github.com/doggy-ferry/treasury-control-api"
 
 };
