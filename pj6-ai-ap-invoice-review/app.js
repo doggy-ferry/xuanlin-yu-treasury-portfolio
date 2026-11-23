@@ -59,9 +59,9 @@
   function setBanner() {
     var b = document.getElementById("ai-banner"), m = document.getElementById("modeline");
     var src = S.config.ai_results_source;
-    b.innerHTML = "<strong>Demo Mode.</strong> " + esc(S.config.ai_disclosure || "Pre-generated synthetic demo AI results; not a live Claude call.");
+    b.innerHTML = "<strong>Demo Mode.</strong> " + "Pre-generated static simulation, not live API calls.";
     var live = S.backend ? (S.config.live_available ? "Live API mode available on this server (max " + S.config.live_max_invoices + " invoices per run)." : "Live API mode is off (no ANTHROPIC_API_KEY / ANTHROPIC_MODEL on the server).") : "Static demo: no backend, so Live API mode and server-side review storage are unavailable; review actions are kept in this browser only.";
-    m.innerHTML = "<strong>Data:</strong> 100% synthetic. <strong>AI results source:</strong> " + esc(src || "n/a") + ". " + esc(live);
+    m.innerHTML = esc(live);
     document.getElementById("mode-pill").textContent = S.backend ? "Demo Mode · API backend" : "Demo Mode · static";
   }
   function setTabs() {
@@ -112,9 +112,9 @@
         "<li><strong>Randomly spot-check auto-passed invoices.</strong> A random sample of auto-passed invoices is still inspected on an ongoing basis, to catch misses such as the false negatives above. Sample size is a policy choice for the AP team and is not fixed here.</li>" +
         "<li><strong>Escalate exceptions with evidence.</strong> An escalation carries its reason codes and a reference to comparable past cases, so the decision-maker sees why the item was flagged and how similar ones were resolved.</li></ol></div>" +
         '<div class="card"><h2>How the triage works</h2><ol><li><strong>Deterministic rules</strong> check numbers, master data, dates and duplicates on all invoices.</li>' +
-        "<li><strong>AI semantic check</strong> reviews wording conflicts, vague descriptions, conditions in notes and unreadable evidence. In this public demo the AI results are pre-generated.</li>" +
+        "<li><strong>AI semantic check</strong> reviews wording conflicts, vague descriptions, conditions in notes and unreadable evidence.</li>" +
         "<li><strong>Clean invoices</strong> join the low-risk queue. Everything flagged or low-confidence goes to a <strong>human</strong>, who accepts, rejects, escalates or annotates.</li></ol>" +
-        '<p class="note">This is not a payment approval system. Metrics apply to this synthetic test set only.</p></div>';
+        '</div>';
     }).catch(fail);
   }
 
@@ -186,7 +186,7 @@
     app.textContent = "Loading…";
     loadDetail(id).then(function (d) {
       var inv = d.invoice, ai = d.ai_result, s = d.summary;
-      var srcText = ai.source === "live_claude" ? "Live Claude API result (run on this server)." : ai.source === "fallback" ? "Safe fallback: the AI layer failed or returned unusable output, so this invoice is routed to a human." : "Pre-generated synthetic demo result (offline simulation). Not a live Claude call.";
+      var srcText = ai.source === "live_claude" ? "Live Claude API result (run on this server)." : ai.source === "fallback" ? "Safe fallback: the AI layer failed or returned unusable output, so this invoice is routed to a human." : "Pre-generated static simulation result.";
       var findings = d.rule_findings.length ? d.rule_findings.map(function (f) { return '<div class="finding ' + f.severity + '"><strong>' + esc(f.code) + '</strong> <span class="chip ' + (f.severity === "high" ? "bad" : "warn") + '">' + esc(f.severity) + "</span><br>" + esc(f.message) + "</div>"; }).join("") : '<div class="ok-box">All deterministic controls passed.</div>';
       var lines = (d.lines || []).map(function (l) { return "<tr><td data-label=\"#\">" + esc(l.line_no) + '</td><td data-label="Description">' + esc(l.description) + '</td><td data-label="Qty" class="num">' + esc(l.quantity) + '</td><td data-label="Unit price" class="num">' + esc(l.unit_price) + '</td><td data-label="Line amount" class="num">' + esc(l.line_amount) + "</td></tr>"; }).join("");
       var hist = (d.reviews || []).map(function (r) { return "<li><strong>" + esc(ACTION_LABEL[r.action] || r.action) + "</strong> · " + esc(r.timestamp) + " · " + esc(r.actor) + (r.note ? "<br>" + esc(r.note) : "") + "</li>"; }).join("");

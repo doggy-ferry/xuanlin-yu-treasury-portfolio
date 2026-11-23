@@ -1,10 +1,10 @@
 # PJ6 — AI-Assisted AP Invoice Review & Exception Triage
 
 A personal portfolio project that demonstrates how an accounts-payable first-pass review can combine **deterministic controls**,
-a **limited AI semantic check** and **human review**, and how to evaluate that workflow honestly against a locked ground truth.
+**targeted AI semantic checks** and **reviewer-controlled final decisions**, and how to evaluate that workflow honestly against a locked ground truth.
 
 > **100% synthetic data.** All company names, addresses, bank accounts, PO numbers, invoice numbers and amounts are fictional.
-> The project contains no employer information. It is a personal portfolio project, **not a production AP system**, and it
+> The project contains no employer information. It is an independent portfolio prototype that
 > **does not approve or execute payments**.
 
 ## What it shows

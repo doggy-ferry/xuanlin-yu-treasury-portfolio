@@ -78,7 +78,7 @@
       <div class="card"><h3>Finance Transformation</h3><p>Process redesign, control mapping and maintainable Excel, Power Query and VBA automation.</p></div>
       <div class="card"><h3>Finance Systems &amp; Analytics</h3><p>Oracle AP, AR and GL; UAT; portfolio-demonstrated Power BI, DAX and SQL querying and aggregation.</p></div>
       <div class="card"><h3>Cross-Border Delivery</h3><p>Chinese, Japanese and English coordination across Japan, China, Taiwan and Thailand.</p></div>
-      <div class="card"><h3>Applied AI &amp; AI Integration</h3><p>Hands-on Claude API and OpenAI API integration across structured-output workflows, multilingual product prototypes, testing, validation and accountable human review. PJ6 applies a limited AI semantic check to AP invoice review on synthetic data, with deterministic rules and a human reviewer in control.</p></div>
+      <div class="card"><h3>Applied AI &amp; AI Integration</h3><p>Hands-on Claude API and OpenAI API integration across structured-output workflows, multilingual product prototypes, testing, validation and accountable human review. PJ6 applies targeted AI semantic checks to AP invoice review on synthetic data, with deterministic rules and a human reviewer in control.</p></div>
     </div>
   </div>
 </section>
@@ -251,7 +251,7 @@
         <div><h4>Claude API media workflow</h4><p>Integrated the Claude API through Python into a local media workflow. Remote model calls returned structured JSON for scene segmentation and image/B-roll keyword selection, followed by local processing and storage.</p></div>
         <div><h4>Multilingual B2B inquiry and RFQ prototype</h4><p>Built and deployed an English, Japanese and Chinese prototype with OpenAI API-assisted inquiry intake, specification completeness and conflict checks, bounded clarification questions, usage controls and human-review escalation.</p></div>
         <div><h4>My responsibility</h4><p>Defined the requirements, workflow and acceptance criteria; tested and validated outputs; debugged integration and data issues; set human-review boundaries; and made the final product decisions. AI tools accelerated implementation but did not replace acceptance responsibility.</p></div>
-        <div><h4>Scope boundary</h4><p>These are personal applied-AI and API-integration projects, not employer production systems. They demonstrate AI-enabled product delivery and integration rather than model training, ML engineering or multi-year senior backend experience.</p></div>
+        <div><h4>Scope boundary</h4><p>Independent applied-AI and API-integration projects. Xuanlin owned requirements, workflow design, testing, validation, human-review boundaries and final product acceptance.</p></div>
       </div>
     </article>
 
@@ -260,14 +260,14 @@
       <span class="proj-num" aria-hidden="true">PJ 6</span>
       <span class="tag">Project 6 · AI-Assisted AP Controls</span>
       <h3 id="p6-title">AI-Assisted AP Invoice Review &amp; Exception Triage</h3>
-      <p>A personal portfolio project on 100 fully synthetic invoices: deterministic controls first, a limited AI semantic check second, and a human reviewer who makes every final decision. It does not approve or execute payments.</p>
+      <p>An independent control prototype using 100 synthetic invoices, combining deterministic controls, targeted AI semantic checks, locked ground truth and reviewer-controlled final decisions.</p>
       <div class="facts">
         <div><h4>Deterministic controls</h4><p>Python rules check duplicates, supplier and PO matching, currency, quantity x price, tax, dates and bank-account changes. The 100-invoice data set has a locked ground truth that only the evaluation module reads, covering twelve exception types including missing required fields.</p></div>
-        <div><h4>Limited AI semantic check</h4><p>Description-versus-PO conflicts, vague wording, conditions hidden in notes and unreadable evidence, returned as validated structured JSON with confidence. Invalid output, timeouts and low confidence escalate to a human. The public demo shows pre-generated offline simulation results, clearly labelled, not live Claude calls.</p></div>
+        <div><h4>Targeted AI semantic checks</h4><p>Description-versus-PO conflicts, vague wording, conditions hidden in notes and unreadable evidence, returned as validated structured JSON with confidence. Invalid output, timeouts and low confidence escalate to a human. The public demo shows a pre-generated static simulation, not live API calls.</p></div>
         <div><h4>Human review and evaluation</h4><p>Reviewers approve, confirm, reject an AI flag, escalate or add notes. Precision, recall and false positives and negatives are computed from the ground truth for manual sampling, rules only, AI only and rules plus AI.</p></div>
-        <div><h4>Scope boundary</h4><p>Synthetic data only; no employer information. Metrics describe this test set only and are not production accuracy. Not a production AP system or ERP, and not a replacement for AP staff or auditors.</p></div>
+        <div><h4>Scope boundary</h4><p>Synthetic test-set evaluation; no employer data. Final decisions remain with human reviewers.</p></div>
       </div>
-      <figure><img src="assets/img/pj6_overview.png" alt="Overview page of the AP invoice review demo showing the data set, first-pass triage and human-review figures, with a banner stating the AI results are pre-generated and not live Claude output." width="1440" height="900"><figcaption>Overview page of the static demo (synthetic data; AI results pre-generated, not live Claude calls).</figcaption></figure>
+      <figure><img src="assets/img/pj6_overview.png" alt="Overview page of the AP invoice review demo showing the data set, first-pass triage and human-review figures, with a banner noting the AI results are a pre-generated static simulation." width="1440" height="900"><figcaption>Overview page of the static demo.</figcaption></figure>
       <div class="proj-actions">
         <a class="btn" href="pj6-ai-ap-invoice-review/">Open the demo</a>
         <a class="btn ghost" data-link="PJ6_REPO_URL" hidden>Source Code</a>
