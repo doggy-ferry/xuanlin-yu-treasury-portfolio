@@ -141,7 +141,7 @@ pre{background:var(--soft);border:1px solid var(--line);border-radius:8px;paddin
   --coral:#b4372f;
 }
 /* Sticky offsets: header (~61px) + project rail (~62px). Anchors use one shared rule. */
-:root{--hdr-offset:76px;--rail-offset:68px;--magenta:#a1316f;--magenta-bright:#e879b9}
+:root{--hdr-offset:76px;--rail-offset:68px;--magenta:#a1316f;--magenta-bright:#e879b9;--coral6:#c2410c;--coral6-bright:#fb923c}
 html{scroll-padding-top:var(--hdr-offset)}
 
 /* header + progress */
@@ -195,6 +195,7 @@ html{scroll-padding-top:var(--hdr-offset)}
 .project.p3{--pc:var(--violet);--ptext:var(--violet);--pbar:linear-gradient(90deg,#4338ca,#a78bfa);--psoft:#f3f0fd}
 .project.p4{--pc:var(--teal);--ptext:var(--teal);--pbar:linear-gradient(90deg,#0f766e,#34d399);--psoft:#ecf8f4}
 .project.p5{--pc:var(--magenta);--ptext:var(--magenta);--pbar:linear-gradient(90deg,#a1316f,#e879b9);--psoft:#fdf0f7}
+.project.p6{--pc:var(--coral6);--ptext:var(--coral6);--pbar:linear-gradient(90deg,#c2410c,#fb923c);--psoft:#fff3ea}
 .project.flagship{border-color:var(--line);box-shadow:none}
 .project .tag{color:var(--ptext)}
 .project .facts div h4{color:var(--ptext)}
@@ -214,7 +215,7 @@ a.btn:focus-visible,.proj-rail a:focus-visible,.project-pill:focus-visible{outli
 .btn{min-height:44px;line-height:1.5}
 
 /* sticky project rail */
-.proj-rail{position:sticky;top:60px;z-index:40;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 1.6rem;padding:8px;background:rgba(244,247,250,.94);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px)}
+.proj-rail{position:sticky;top:60px;z-index:40;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:0 0 1.6rem;padding:8px;background:rgba(244,247,250,.94);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px)}
 .proj-rail a{display:flex;align-items:center;gap:.55rem;min-height:44px;padding:.35rem .7rem;border-radius:8px;border:1px solid transparent;border-left:4px solid var(--rc);background:#fff;color:var(--ink);text-decoration:none;font-size:.88rem;line-height:1.25;transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease}
 .proj-rail b{font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--rt);white-space:nowrap}
 .proj-rail a:hover{background:var(--rs);border-color:var(--rc)}
@@ -224,8 +225,9 @@ a.btn:focus-visible,.proj-rail a:focus-visible,.project-pill:focus-visible{outli
 .proj-rail .p3{--rc:var(--violet-bright);--rt:var(--violet);--rs:#f3f0fd}
 .proj-rail .p4{--rc:var(--green-bright);--rt:var(--teal);--rs:#ecf8f4}
 .proj-rail .p5{--rc:var(--magenta-bright);--rt:var(--magenta);--rs:#fdf0f7}
+.proj-rail .p6{--rc:var(--coral6-bright);--rt:var(--coral6);--rs:#fff3ea}
 .project-pill.p5{--pk:#f4a6d2}
-.hero-projects .project-pill.p5{grid-column:1/-1}
+.project-pill.p6{--pk:#fdba74}
 .hero .caps li:nth-child(6){--c:#f4a6d2}
 #focus .card:nth-child(7){--cc:var(--magenta-bright)}
 #focus .card:last-child:nth-child(3n+1){grid-column:1/-1}
