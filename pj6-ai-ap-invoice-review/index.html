@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP Invoice Review &amp; Exception Triage — synthetic demo</title>
+<meta name="description" content="Portfolio demo: deterministic AP controls plus limited AI semantic checks and human review, on 100% synthetic invoices.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <h1>AI-Assisted AP Invoice Review &amp; Exception Triage</h1>
+      <p>Personal portfolio project · not a production AP system · does not approve payments</p>
+    </div>
+    <div class="pills">
+      <span class="pill pill-syn">100% synthetic data</span>
+      <span class="pill" id="mode-pill">Demo Mode</span>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button role="tab" class="tab" data-view="overview" aria-selected="true">Overview</button>
+    <button role="tab" class="tab" data-view="queue" aria-selected="false">Review Queue</button>
+    <button role="tab" class="tab" data-view="evaluation" aria-selected="false">Evaluation</button>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <div class="banner" id="ai-banner" role="note"></div>
+  <p class="modeline" id="modeline"></p>
+  <div id="app" aria-live="polite">Loading…</div>
+</main>
+
+<footer class="foot">
+  Synthetic portfolio demo. All names, accounts, PO numbers, invoices and amounts are fictional. Metrics describe this
+  100-invoice test set only and are not production accuracy. Final decisions always rest with a human reviewer.
+</footer>
+<script src="snapshot.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
