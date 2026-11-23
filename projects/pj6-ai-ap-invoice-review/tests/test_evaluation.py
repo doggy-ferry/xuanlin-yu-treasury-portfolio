@@ -97,6 +97,16 @@ def test_snapshot_matches_current_data():
     assert [v["reason_codes"] for v in snap["invoices"]] == [v["reason_codes"] for v in live]
     ev = client.get("/api/evaluation").json()
     assert snap["evaluation"]["overview"]["sent_true_exceptions"] == ev["overview"]["sent_true_exceptions"]
+    # every page of the static demo shows ONE state: queue statuses must agree with the Overview counts
+    o = snap["evaluation"]["overview"]
+    count = lambda s: sum(1 for v in snap["invoices"] if v["final_status"] == s)  # noqa: E731
+    assert count("exception_confirmed") == o["human_confirmed_exceptions"]
+    assert count("escalated") == o["human_escalated"]
+    assert count("ai_flag_rejected") == o["human_ai_flags_rejected"]
+    assert count("approved_normal") == o["human_approved_normal"]
+    assert count("pending_review") == o["pending_review"]
+    assert sum(1 for v in snap["invoices"] if v["in_queue"]) == o["sent_to_human_review"]
+    assert all(snap["details"][v["invoice_id"]]["summary"]["final_status"] == v["final_status"] for v in snap["invoices"])
     js = (ROOT / "frontend" / "snapshot.js").read_text(encoding="utf-8")
     assert js == "window.PJ6_SNAPSHOT=" + (ROOT / "frontend" / "snapshot.json").read_text(encoding="utf-8") + ";"
 

@@ -24,9 +24,9 @@ from app.pipeline import Pipeline  # noqa: E402
 
 def main() -> None:
     p = Pipeline(DATA_DIR)
+    p.run_scripted_reviewer()  # one consistent state for every page: queue, details and evaluation
     base_views = p.views()
     details = {v["invoice_id"]: p.detail(v["invoice_id"]) for v in base_views}
-    p.run_scripted_reviewer()
     evaluation = evaluate(p.views(), load_ground_truth(DATA_DIR))
     snapshot = {
         "config": {"mode": "demo", "synthetic": True, "ai_results_source": p.meta.get("source"),
