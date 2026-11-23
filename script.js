@@ -88,6 +88,10 @@
     });
   }
   var navLinks = {};
+  function atPageBottom() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    return max > 0 && (window.pageYOffset || document.documentElement.scrollTop) >= max - 4;
+  }
   if ("IntersectionObserver" in window) {
     var band = { rootMargin: "-35% 0px -55% 0px" };
 
@@ -95,12 +99,19 @@
       var id = a.getAttribute("href").slice(1);
       (navLinks[id] = navLinks[id] || []).push(a);
     });
+    // Track which elements currently cross the band, then pick the last one in document order.
+    // This is independent of the order in which observer callbacks arrive.
+    var sectionIds = ["top", "focus", "projects", "impact", "how", "about", "contact"];
+    var sectionSeen = {};
     var sectionIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) setCurrent(navLinks, en.target.id);
-      });
+      entries.forEach(function (en) { sectionSeen[en.target.id] = en.isIntersecting; });
+      var current = "";
+      sectionIds.forEach(function (id) { if (sectionSeen[id]) current = id; });
+      if (atPageBottom()) current = "contact";
+      setCurrent(navLinks, current);
+      syncProjects();
     }, band);
-    ["top", "focus", "projects", "impact", "how", "about", "contact"].forEach(function (id) {
+    sectionIds.forEach(function (id) {
       var s = document.getElementById(id);
       if (s) sectionIo.observe(s);
     });
@@ -113,26 +124,31 @@
       var id = a.getAttribute("href").slice(1);
       (projGroups[id] = projGroups[id] || []).push(a);
     });
+    var projSeen = {};
+    var lastProject = "";
+    function syncProjects() {
+      var current = "";
+      Object.keys(projCards).forEach(function (id) { if (projSeen[id]) current = id; });
+      // Keep the last project highlighted across the small gaps between cards,
+      // and clear it once the reader has left the Featured Projects section.
+      if (current) lastProject = current;
+      var inProjects = !!sectionSeen.projects;
+      var shown = inProjects ? lastProject : "";
+      setCurrent(projGroups, shown);
+      // Keep the active chip visible in the swipeable rail (horizontal only; never moves the page).
+      var rail = document.querySelector(".proj-rail");
+      var chip = rail && rail.querySelector("a[aria-current]");
+      if (rail && chip && rail.scrollWidth > rail.clientWidth) {
+        var target = chip.offsetLeft - (rail.clientWidth - chip.offsetWidth) / 2;
+        rail.scrollTo({ left: Math.max(0, target), behavior: reduceMotion ? "auto" : "smooth" });
+      }
+      Object.keys(projCards).forEach(function (k) { projCards[k].classList.toggle("is-active", k === shown); });
+    }
     var projIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        setCurrent(projGroups, en.target.id);
-        Object.keys(projCards).forEach(function (k) { projCards[k].classList.toggle("is-active", k === en.target.id); });
-      });
+      entries.forEach(function (en) { projSeen[en.target.id] = en.isIntersecting; });
+      syncProjects();
     }, band);
     Object.keys(projCards).forEach(function (id) { projIo.observe(projCards[id]); });
-    // Clear project state when scrolling outside the projects section.
-    var projSection = document.getElementById("projects");
-    if (projSection) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (!en.isIntersecting) {
-            setCurrent(projGroups, "");
-            Object.keys(projCards).forEach(function (k) { projCards[k].classList.remove("is-active"); });
-          }
-        });
-      }, band).observe(projSection);
-    }
 
     // Section reveal: subtle fade-up, once, never for reduced-motion users.
     if (!reduceMotion) {
@@ -161,7 +177,7 @@
     if (header) header.classList.toggle("is-scrolled", y > 8);
     if (toTop) toTop.classList.toggle("show", y > 900);
     // The short Contact section never reaches the observer band; treat page bottom as Contact.
-    if (navLinks.contact && max > 0 && y >= max - 4) setCurrent(navLinks, "contact");
+    if (navLinks.contact && atPageBottom()) setCurrent(navLinks, "contact");
   }
   window.addEventListener("scroll", function () {
     if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
