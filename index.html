@@ -78,7 +78,7 @@
       <div class="card"><h3>Finance Transformation</h3><p>Process redesign, control mapping and maintainable Excel, Power Query and VBA automation.</p></div>
       <div class="card"><h3>Finance Systems &amp; Analytics</h3><p>Oracle AP, AR and GL; UAT; portfolio-demonstrated Power BI, DAX and SQL querying and aggregation.</p></div>
       <div class="card"><h3>Cross-Border Delivery</h3><p>Chinese, Japanese and English coordination across Japan, China, Taiwan and Thailand.</p></div>
-      <div class="card"><h3>Applied AI &amp; AI Integration</h3><p>Hands-on Claude API and OpenAI API integration across structured-output workflows, multilingual product prototypes, testing, validation and accountable human review.</p></div>
+      <div class="card"><h3>Applied AI &amp; AI Integration</h3><p>Hands-on Claude API and OpenAI API integration across structured-output workflows, multilingual product prototypes, testing, validation and accountable human review. PJ6 applies a limited AI semantic check to AP invoice review on synthetic data, with deterministic rules and a human reviewer in control.</p></div>
     </div>
   </div>
 </section>
@@ -262,12 +262,16 @@
       <h3 id="p6-title">AI-Assisted AP Invoice Review &amp; Exception Triage</h3>
       <p>A personal portfolio project on 100 fully synthetic invoices: deterministic controls first, a limited AI semantic check second, and a human reviewer who makes every final decision. It does not approve or execute payments.</p>
       <div class="facts">
-        <div><h4>Deterministic controls</h4><p>Python rules check duplicates, supplier and PO matching, currency, quantity x price, tax, dates and bank-account changes. The data set holds 72 normal invoices and 28 with known exceptions across 11 types, locked as ground truth and read only by the evaluation module.</p></div>
+        <div><h4>Deterministic controls</h4><p>Python rules check duplicates, supplier and PO matching, currency, quantity x price, tax, dates and bank-account changes. The 100-invoice data set has a locked ground truth that only the evaluation module reads, covering twelve exception types including missing required fields.</p></div>
         <div><h4>Limited AI semantic check</h4><p>Description-versus-PO conflicts, vague wording, conditions hidden in notes and unreadable evidence, returned as validated structured JSON with confidence. Invalid output, timeouts and low confidence escalate to a human. The public demo shows pre-generated offline simulation results, clearly labelled, not live Claude calls.</p></div>
         <div><h4>Human review and evaluation</h4><p>Reviewers approve, confirm, reject an AI flag, escalate or add notes. Precision, recall and false positives and negatives are computed from the ground truth for manual sampling, rules only, AI only and rules plus AI.</p></div>
         <div><h4>Scope boundary</h4><p>Synthetic data only; no employer information. Metrics describe this test set only and are not production accuracy. Not a production AP system or ERP, and not a replacement for AP staff or auditors.</p></div>
       </div>
-      <p class="actions"><a class="btn" href="pj6-ai-ap-invoice-review/">Open the demo</a></p>
+      <figure><img src="assets/img/pj6_overview.png" alt="Overview page of the AP invoice review demo showing the data set, first-pass triage and human-review figures, with a banner stating the AI results are pre-generated and not live Claude output." width="1440" height="900"><figcaption>Overview page of the static demo (synthetic data; AI results pre-generated, not live Claude calls).</figcaption></figure>
+      <div class="proj-actions">
+        <a class="btn" href="pj6-ai-ap-invoice-review/">Open the demo</a>
+        <a class="btn ghost" data-link="PJ6_REPO_URL" hidden>Source Code</a>
+      </div>
     </article>
 
   </div>
@@ -284,6 +288,7 @@
       <div class="stat"><div class="num">~19–21 h / month</div><div class="lab">Combined recurring impact (components overlap)</div><span class="est">Estimated</span></div>
     </div>
     <p class="note" style="margin-top:1.4rem">Estimated by the author based on before-and-after task time and operating frequency. Scope and methodology are described in the project documentation.</p>
+    <p class="note"><strong>PJ6 is not part of these estimates.</strong> The <a href="#project-ap-review">AP invoice review demo</a> runs on 100% synthetic data and contributes no time-saving figure; its evaluation metrics describe that test set only and are not production accuracy.</p>
   </div>
 </section>
 

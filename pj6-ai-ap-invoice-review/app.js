@@ -19,7 +19,10 @@
     return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function pct(x) { return (x * 100).toFixed(1) + "%"; }
   function money(v, cur) { var n = Number(v); return isNaN(n) ? esc(v) : n.toLocaleString("en-GB", { minimumFractionDigits: cur === "JPY" ? 0 : 2, maximumFractionDigits: cur === "JPY" ? 0 : 2 }); }
-  function chips(codes, cls) { return (codes || []).map(function (c) { return '<span class="chip ' + (cls || "") + '">' + esc(c) + "</span>"; }).join(""); }
+  function chips(codes, cls) { // one chip per code, separated by whitespace and wrapped in a flex container
+    if (!codes || !codes.length) return "";
+    return '<span class="codes">' + codes.map(function (c) { return '<span class="chip ' + (cls || "") + '">' + esc(c) + "</span>"; }).join(" ") + "</span>";
+  }
   function riskChip(r) { return '<span class="chip ' + ({ high: "bad", medium: "warn", low: "mute", none: "ok" }[r] || "") + '">' + esc(r) + "</span>"; }
   function statusChip(s, label) { var cls = s === "auto_passed" || s === "approved_normal" || s === "ai_flag_rejected" ? "ok" : s === "pending_review" ? "warn" : "bad"; return '<span class="chip ' + cls + '">' + esc(label) + "</span>"; }
 
@@ -83,17 +86,31 @@
     loadEvaluation().then(function (e) {
       var o = e.overview;
       app.innerHTML =
-        '<div class="card"><h2>Overview <span class="chip warn">Evaluation view · uses the locked ground truth</span></h2>' +
-        '<p class="note">Every figure below is computed by the program from the data on load. Precision, recall, F1, false positives and false negatives describe the <strong>Rules + AI</strong> first-pass triage, before any human decision.</p>' +
-        '<div class="grid kpis">' +
-        kpi(o.total_invoices, "Total invoices") + kpi(o.normal_ground_truth, "Normal (ground truth)") + kpi(o.exception_ground_truth, "Exception (ground truth)") +
-        kpi(o.auto_passed, "Automatically passed (low risk)", "good") + kpi(o.sent_to_human_review, "Sent to human review") +
-        kpi(o.human_confirmed_exceptions, "Confirmed exceptions (by reviewer)") +
-        kpi(o.false_positives, "False positives", "warn") + kpi(o.false_negatives, "False negatives", "warn") +
-        kpi(pct(o.precision), "Precision") + kpi(pct(o.recall), "Recall") + kpi(pct(o.f1), "F1 score") +
-        kpi(pct(o.review_reduction_rate), "Review reduction rate (auto-passed ÷ total)") +
-        kpi(o.claude_api_calls, "Claude API calls (this session)") + kpi("$" + Number(o.estimated_api_cost_usd).toFixed(4), "Estimated API cost (configurable rate assumption)") +
-        "</div></div>" +
+        '<div class="card"><h2>Overview</h2>' +
+        '<p class="note">Every figure on this page is computed by the program from the data and the locked ground truth on each load; nothing is typed in. The numbers are grouped by when they apply, so each group reconciles on its own.</p>' +
+        "<h3>1. Data set (ground truth)</h3>" +
+        '<div class="grid kpis">' + kpi(o.total_invoices, "Total invoices") + kpi(o.normal_ground_truth, "Normal invoices") + kpi(o.exception_ground_truth, "Invoices with a known exception") + "</div>" +
+        "<h3>2. First-pass triage: rules + AI, before any human decision</h3>" +
+        '<div class="grid kpis">' + kpi(o.auto_passed, "Automatically passed (low risk)", "good") + kpi(o.sent_to_human_review, "Sent to human review") +
+        kpi(o.sent_true_exceptions, "…of which true exceptions") + kpi(o.sent_false_alarms, "…of which false alarms (false positives)", "warn") +
+        kpi(o.auto_passed_missed_exceptions, "Exceptions missed among auto-passed (false negatives)", "warn") +
+        kpi(pct(o.first_pass.precision), "Precision") + kpi(pct(o.first_pass.recall), "Recall") + kpi(pct(o.first_pass.f1), "F1 score") +
+        kpi(pct(o.review_reduction_rate), "Review reduction rate (auto-passed ÷ total)") + "</div>" +
+        '<p class="note">Reconciliation: ' + o.sent_to_human_review + " sent = " + o.sent_true_exceptions + " true exceptions + " + o.sent_false_alarms + " false alarms; " + o.auto_passed + " auto-passed = " + o.auto_passed_correct + " correct + " + o.auto_passed_missed_exceptions + " missed. Exceptions in the data: " + o.exception_ground_truth + " = " + o.sent_true_exceptions + " caught + " + o.auto_passed_missed_exceptions + " missed.</p>" +
+        "<h3>3. Human review: current state of this session</h3>" +
+        '<div class="grid kpis">' + kpi(o.human_decisions_recorded + " / " + o.sent_to_human_review, "Queue items with a decision") + kpi(o.pending_review, "Still pending") +
+        kpi(o.human_confirmed_exceptions, "Confirmed as exception") + kpi(o.human_escalated, "Escalated (still flagged)") +
+        kpi(o.human_ai_flags_rejected, "AI flag rejected") + kpi(o.human_approved_normal, "Approved as normal") + "</div>" +
+        '<div class="grid kpis" style="margin-top:12px">' + kpi(o.after_review.fp, "False positives after review", "warn") + kpi(o.after_review.fn, "False negatives after review", "warn") +
+        kpi(pct(o.after_review.precision), "Precision after review") + kpi(pct(o.after_review.recall), "Recall after review") + kpi(pct(o.after_review.f1), "F1 after review") + "</div>" +
+        '<p class="note">After review, pending items still count as flagged; escalated items count as exceptions. ' + (S.backend ? "" : "This static snapshot has the scripted demo reviewer already applied (a simulation, not a person). ") + "</p>" +
+        "<h3>4. Claude API usage</h3>" +
+        '<div class="grid kpis">' + kpi(o.claude_api_calls, "Live Claude API calls (this session)") + kpi("$" + Number(o.estimated_api_cost_usd).toFixed(4), "Estimated API cost (configurable rate assumption)") + "</div></div>" +
+        '<div class="card"><h2>Acceptance protocol</h2><p class="note">How a team would roll this out. These are procedure steps, not results.</p><ol class="protocol">' +
+        "<li><strong>Verify the first normal invoices in full.</strong> Before trusting the automation, a reviewer checks the initial batch of invoices that the system passes, line by line, against source documents.</li>" +
+        "<li><strong>Then review exceptions only.</strong> Once the early batch confirms the controls behave, the reviewer works the flagged queue and the low-risk queue is not reopened individually.</li>" +
+        "<li><strong>Randomly spot-check auto-passed invoices.</strong> A random sample of auto-passed invoices is still inspected on an ongoing basis, to catch misses such as the false negatives above. Sample size is a policy choice for the AP team and is not fixed here.</li>" +
+        "<li><strong>Escalate exceptions with evidence.</strong> An escalation carries its reason codes and a reference to comparable past cases, so the decision-maker sees why the item was flagged and how similar ones were resolved.</li></ol></div>" +
         '<div class="card"><h2>How the triage works</h2><ol><li><strong>Deterministic rules</strong> check numbers, master data, dates and duplicates on all invoices.</li>' +
         "<li><strong>AI semantic check</strong> reviews wording conflicts, vague descriptions, conditions in notes and unreadable evidence. In this public demo the AI results are pre-generated.</li>" +
         "<li><strong>Clean invoices</strong> join the low-risk queue. Everything flagged or low-confidence goes to a <strong>human</strong>, who accepts, rejects, escalates or annotates.</li></ol>" +
@@ -115,11 +132,17 @@
       return true;
     });
   }
+  function queueSummary() { // counts derived from the loaded invoices, same definitions as the Overview
+    var n = S.invoices.length, q = S.invoices.filter(function (v) { return v.in_queue; }).length;
+    var c = function (s) { return S.invoices.filter(function (v) { return v.final_status === s; }).length; };
+    return '<p class="note"><strong>' + n + "</strong> invoices · <strong>" + (n - q) + "</strong> auto-passed · <strong>" + q + "</strong> sent to human review (" +
+      c("pending_review") + " pending, " + c("exception_confirmed") + " confirmed, " + c("escalated") + " escalated, " + c("ai_flag_rejected") + " AI flag rejected, " + c("approved_normal") + " approved as normal).</p>";
+  }
   function opt(val, label, cur) { return '<option value="' + val + '"' + (cur === val ? " selected" : "") + ">" + label + "</option>"; }
   function renderQueue() {
     var f = S.filters;
     app.innerHTML =
-      '<div class="card"><h2>Invoice Review Queue <span class="chip ok">Review mode · ground truth hidden</span></h2>' +
+      '<div class="card"><h2>Invoice Review Queue</h2><p class="note">Review mode: ground truth is hidden.</p>' + queueSummary() +
       '<form class="filters" id="filters" onsubmit="return false">' +
       '<label>Search<input type="search" id="f-q" placeholder="Invoice, supplier, PO, code" value="' + esc(f.q) + '"></label>' +
       '<label>Queue<select id="f-status">' + opt("all", "All invoices", f.status) + opt("flagged", "Flagged for review", f.status) + opt("auto", "Auto-passed (low risk)", f.status) + "</select></label>" +
@@ -210,7 +233,7 @@
       function errList(list) { return list.length ? '<div class="tablewrap"><table class="cards"><thead><tr><th>Invoice</th><th>Ground-truth types</th><th>Rule codes</th><th>AI status / codes</th></tr></thead><tbody>' + list.map(function (r) { return '<tr><td data-label="Invoice">' + esc(r.invoice_id) + '</td><td data-label="Ground truth">' + (chips(r.ground_truth_types, "warn") || "normal") + '</td><td data-label="Rules">' + (chips(r.rule_codes) || "—") + '</td><td data-label="AI">' + esc(r.ai_status) + " " + chips(r.ai_codes) + "</td></tr>"; }).join("") + "</tbody></table></div>" : '<p class="note">None.</p>'; }
       var btns = order.map(function (k) { return '<button class="btn ' + (k === S.evalMethod ? "" : "alt") + '" data-m="' + k + '">' + esc(m[k].label) + "</button>"; }).join("");
       app.innerHTML =
-        '<div class="card"><h2>Evaluation Dashboard <span class="chip warn">Evaluation view · uses the locked ground truth</span></h2><p class="note">Computed by the evaluator on every load from the ground-truth file. Invoice-level: an invoice counts as flagged if any control or the AI check raised it.</p>' +
+        '<div class="card"><h2>Evaluation Dashboard</h2><p class="note">Evaluation view: uses the locked ground truth. Computed by the evaluator on every load from the ground-truth file. Invoice-level: an invoice counts as flagged if any control or the AI check raised it.</p>' +
         '<div class="tablewrap"><table class="cards"><thead><tr><th>Method</th><th class="num">Invoices a human checks</th><th class="num">TP</th><th class="num">FP</th><th class="num">FN</th><th class="num">TN</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead><tbody>' + rowsM + "</tbody></table></div>" +
         '<p class="note">Final human-reviewed: ' + (m.final_human.pending_items || 0) + " queue items still pending count as flagged. Manual sampling is an assumption model (seeded sample, perfect on inspected invoices), not a measurement.</p>" +
         (S.backend ? '<div class="actions"><button class="btn alt" id="scripted">Apply scripted demo reviewer (simulation)</button><button class="btn alt" id="reset">Reset review actions</button></div>' : '<p class="note">Static snapshot: the Final row reflects a scripted demo reviewer applied when the snapshot was exported.</p>') + "</div>" +
@@ -236,6 +259,9 @@
       return loadInvoices().then(function () { setBanner(); render(); });
     }
     app.innerHTML = '<div class="card"><h2>Something went wrong</h2><p>' + esc(e && e.message ? e.message : e) + "</p></div>"; }
+
+  // Link back to the portfolio only when hosted on the portfolio site.
+  if (/github\.io$/.test(location.hostname)) { var bl = document.getElementById("back-link"); if (bl) bl.hidden = false; }
 
   // ---------------- boot: backend if reachable, otherwise the static snapshot ----------------
   getJSON("api/config").then(function (c) { S.backend = true; S.config = c; })

@@ -18,6 +18,9 @@ window.SITE_CONFIG = {
 
   // ---- Treasury FX Payment Control API ---------------------------------
   TREASURY_API_DOCS_URL: "https://treasury-fx-payment-control-api.onrender.com/docs",
-  TREASURY_API_REPO_URL: "https://github.com/doggy-ferry/treasury-control-api"
+  TREASURY_API_REPO_URL: "https://github.com/doggy-ferry/treasury-control-api",
+
+  // ---- PJ6 AP Invoice Review (source lives in this portfolio repository) ----
+  PJ6_REPO_URL: "https://github.com/doggy-ferry/xuanlin-yu-treasury-portfolio/tree/main/projects/pj6-ai-ap-invoice-review"
 
 };

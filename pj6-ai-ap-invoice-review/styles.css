@@ -16,6 +16,8 @@ h2{font-size:1.2rem;margin-bottom:12px} h3{font-size:1rem;margin-bottom:8px}
 .brand p{margin:4px 0 0;color:#c4d0e2;font-size:.85rem}
 .pills{display:flex;gap:8px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;min-height:28px;padding:2px 10px;border-radius:999px;background:#fff2;border:1px solid #fff4;font-size:.8rem;font-weight:600}
+a.pill-link{color:#fff;text-decoration:none;min-height:44px}
+a.pill-link:hover{background:#fff4}
 .pill-syn{background:#ffe9a8;color:#4d3300;border-color:#ffe9a8}
 .tabs{display:flex;gap:4px;padding:0 16px;max-width:1280px;margin:0 auto;overflow-x:auto}
 .tab{min-height:44px;padding:8px 16px;background:transparent;border:0;border-bottom:3px solid transparent;color:#c4d0e2;font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
@@ -34,6 +36,14 @@ main{max-width:1280px;margin:0 auto;padding:16px}
 .kpi.warn .v{color:var(--red)} .kpi.good .v{color:var(--green)}
 .note{color:var(--muted);font-size:.85rem}
 .chip{display:inline-block;padding:1px 8px;border-radius:999px;font-size:.74rem;font-weight:600;margin:1px 2px 1px 0;background:var(--blue-soft);color:var(--blue)}
+.chip{white-space:nowrap}
+@media (min-width:901px){td[data-label="PO"],td[data-label="Invoice no."],td[data-label="Rule status"],td[data-label="AI status"],td[data-label="Risk"]{white-space:nowrap}}
+@media (max-width:900px){.chip{white-space:normal}}
+.codes{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-start}
+td[data-label="Reason codes"] .codes{justify-content:flex-end}
+@media (min-width:901px){td[data-label="Reason codes"] .codes{justify-content:flex-start}}
+.card h3{margin:18px 0 8px;color:var(--navy)}
+ol.protocol li{margin-bottom:8px}
 .chip.ok{background:var(--green-soft);color:var(--green)} .chip.bad{background:var(--red-soft);color:var(--red)}
 .chip.warn{background:var(--amber-soft);color:var(--amber)} .chip.mute{background:#eceff4;color:var(--muted)}
 .filters{display:grid;grid-template-columns:2fr repeat(3,1fr) auto;gap:10px;align-items:end;margin-bottom:12px}

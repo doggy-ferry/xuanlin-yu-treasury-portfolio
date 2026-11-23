@@ -1,0 +1,934 @@
+{
+ "meta": {
+  "source": "precomputed_simulation",
+  "generator": "scripts/generate_demo_results.py (deterministic offline heuristic)",
+  "disclosure": "Pre-generated synthetic demo results. NOT live Claude output. Produced by a deterministic offline simulation so the demo runs without an API key.",
+  "schema_version": 1
+ },
+ "results": [
+  {
+   "invoice_id": "INV-0001",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "VAGUE_DESCRIPTION"
+   ],
+   "explanation": "Description is too generic to verify what was supplied.",
+   "confidence": 0.55,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0002",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0003",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0004",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0005",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0006",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0007",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0008",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0009",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0010",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "SEMANTIC_DESCRIPTION_CONFLICT"
+   ],
+   "explanation": "No purchase order text is available to compare against.",
+   "confidence": 0.4,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0011",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "VAGUE_DESCRIPTION"
+   ],
+   "explanation": "Description is too generic to verify what was supplied.",
+   "confidence": 0.55,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0012",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0013",
+   "semantic_status": "exception",
+   "reason_codes": [
+    "SEMANTIC_DESCRIPTION_CONFLICT"
+   ],
+   "explanation": "Invoiced goods or services do not correspond to the purchase order description.",
+   "confidence": 0.88,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0014",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0015",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0016",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0017",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0018",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0019",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0020",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0021",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0022",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0023",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0024",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0025",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0026",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0027",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0028",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0029",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0030",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0031",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0032",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0033",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "VAGUE_DESCRIPTION"
+   ],
+   "explanation": "Description is too generic to verify what was supplied.",
+   "confidence": 0.55,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0034",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0035",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0036",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0037",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0038",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0039",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0040",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0041",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0042",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0043",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "UNREADABLE_OR_LOW_CONFIDENCE_EVIDENCE"
+   ],
+   "explanation": "Notes indicate the source evidence is partly unreadable; the extracted text cannot be relied on.",
+   "confidence": 0.3,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0044",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0045",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0046",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0047",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0048",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0049",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "SEMANTIC_DESCRIPTION_CONFLICT"
+   ],
+   "explanation": "No purchase order text is available to compare against.",
+   "confidence": 0.4,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0050",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0051",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "SEMANTIC_DESCRIPTION_CONFLICT"
+   ],
+   "explanation": "No purchase order text is available to compare against.",
+   "confidence": 0.4,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0052",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0053",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0054",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0055",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0056",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0057",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0058",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0059",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "VAGUE_DESCRIPTION"
+   ],
+   "explanation": "Description is too generic to verify what was supplied.",
+   "confidence": 0.55,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0060",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0061",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0062",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0063",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0064",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0065",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0066",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0067",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0068",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0069",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0070",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0071",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0072",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0073",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "SEMANTIC_DESCRIPTION_CONFLICT"
+   ],
+   "explanation": "No purchase order text is available to compare against.",
+   "confidence": 0.4,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0074",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0075",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0076",
+   "semantic_status": "exception",
+   "reason_codes": [
+    "EXCEPTION_CONDITION_IN_NOTES"
+   ],
+   "explanation": "Notes state a payment condition that is not part of the purchase order terms.",
+   "confidence": 0.82,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0077",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0078",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0079",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0080",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0081",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0082",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0083",
+   "semantic_status": "uncertain",
+   "reason_codes": [
+    "UNREADABLE_OR_LOW_CONFIDENCE_EVIDENCE"
+   ],
+   "explanation": "Notes indicate the source evidence is partly unreadable; the extracted text cannot be relied on.",
+   "confidence": 0.3,
+   "needs_human_review": true,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0084",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0085",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0086",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0087",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0088",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0089",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0090",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0091",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0092",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0093",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0094",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0095",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0096",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0097",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0098",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0099",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  },
+  {
+   "invoice_id": "INV-0100",
+   "semantic_status": "pass",
+   "reason_codes": [],
+   "explanation": "Invoice wording is consistent with the purchase order description.",
+   "confidence": 0.93,
+   "needs_human_review": false,
+   "source": "precomputed_simulation"
+  }
+ ]
+}

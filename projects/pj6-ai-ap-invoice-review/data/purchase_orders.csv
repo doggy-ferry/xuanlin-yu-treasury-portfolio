@@ -1,0 +1,94 @@
+po_number,supplier_id,currency,po_date,description,net_amount,tax_rate
+PO-260001,SUP-021,CNY,2026-01-09,General services as agreed,16425.60,0.13
+PO-260002,SUP-008,USD,2026-02-24,Supply of corrugated shipping cartons; foam edge protectors,2607.00,0.07
+PO-260003,SUP-020,CNY,2026-04-07,Supply of customs clearance handling; freight forwarding export shipment; container drayage,31794.00,0.13
+PO-260004,SUP-014,EUR,2026-02-23,Supply of desk lamps; printer paper A4 boxes; whiteboard markers; stapler and binder sets,20555.40,0.21
+PO-260005,SUP-007,USD,2026-04-21,Supply of photography session; social media campaign assets; trade show booth design,8173.00,0.08
+PO-260006,SUP-009,USD,2026-05-10,Supply of external SSD drives; wireless keyboards,11349.00,0.08
+PO-260007,SUP-021,CNY,2026-03-04,Supply of market research report; training facilitation days; process mapping workshop,8439.00,0.13
+PO-260008,SUP-003,GBP,2026-05-12,Supply of office cleaning services; HVAC maintenance visit; garden and grounds upkeep,19820.80,0.20
+PO-260009,SUP-018,JPY,2026-04-26,Supply of analytics platform licence renewal; reporting tool licences; cloud storage subscription,1995600,0.10
+PO-260011,SUP-019,JPY,2026-01-18,General services as agreed,822400,0.10
+PO-260012,SUP-002,GBP,2026-03-14,Supply of reporting tool licences; analytics platform licence renewal,12662.00,0.20
+PO-260013,SUP-010,USD,2026-02-05,Supply of endpoint security licences; reporting tool licences; workflow automation licences; cloud storage subscription,14547.10,0.07
+PO-260014,SUP-021,CNY,2026-01-09,Supply of internal audit support hours; legal drafting hours,13209.00,0.13
+PO-260015,SUP-015,EUR,2026-04-14,Supply of photography session; trade show booth design,11414.00,0.23
+PO-260016,SUP-012,EUR,2026-02-16,Supply of last-mile delivery runs; customs clearance handling; courier services,14181.00,0.23
+PO-260017,SUP-013,EUR,2026-02-15,"Supply of legal drafting hours; internal audit support hours; market research report; process mapping workshop (12-month term, standard support)",14259.20,0.19
+PO-260018,SUP-015,EUR,2026-03-10,Supply of photography session; banner stands,8156.00,0.23
+PO-260019,SUP-020,CNY,2026-01-27,Supply of customs clearance handling; container drayage,15977.00,0.13
+PO-260020,SUP-014,EUR,2026-03-06,Supply of printer paper A4 boxes; ergonomic chairs,14333.40,0.21
+PO-260021,SUP-018,JPY,2026-01-23,Supply of endpoint security licences; analytics platform licence renewal,632800,0.10
+PO-260022,SUP-003,GBP,2026-01-11,Supply of fire extinguisher inspection; HVAC maintenance visit; lift servicing,16916.00,0.20
+PO-260023,SUP-009,USD,2026-04-28,Supply of external SSD drives; wireless keyboards; laptop docking stations,18904.40,0.08
+PO-260024,SUP-004,GBP,2026-01-16,Supply of freight forwarding export shipment; customs clearance handling; courier services,7363.50,0.20
+PO-260025,SUP-001,GBP,2026-04-19,Supply of wireless keyboards; laptop docking stations; USB-C monitors; rack mount servers,10147.80,0.20
+PO-260026,SUP-003,GBP,2026-01-06,Supply of lift servicing; fire extinguisher inspection; HVAC maintenance visit,9715.00,0.20
+PO-260027,SUP-004,GBP,2026-01-19,Supply of container drayage; customs clearance handling; last-mile delivery runs; warehouse pallet storage,10098.00,0.20
+PO-260028,SUP-002,GBP,2026-05-18,Supply of cloud storage subscription; endpoint security licences; analytics platform licence renewal; workflow automation licences,15742.20,0.20
+PO-260029,SUP-011,EUR,2026-01-07,Supply of office cleaning services; HVAC maintenance visit,3400.00,0.21
+PO-260030,SUP-007,USD,2026-04-18,Supply of printed brochures; social media campaign assets; banner stands; photography session,12225.50,0.08
+PO-260031,SUP-022,CNY,2026-01-15,Supply of stapler and binder sets; printer paper A4 boxes; ergonomic chairs,15074.60,0.13
+PO-260032,SUP-022,CNY,2026-01-25,Supply of printer paper A4 boxes; whiteboard markers; filing cabinets; desk lamps,18473.00,0.13
+PO-260033,SUP-009,USD,2026-03-11,General services as agreed,10548.00,0.08
+PO-260034,SUP-004,GBP,2026-03-11,Supply of container drayage; warehouse pallet storage; customs clearance handling,7619.80,0.20
+PO-260035,SUP-017,JPY,2026-05-13,Supply of wireless keyboards; rack mount servers; USB-C monitors; laptop docking stations,2078800,0.10
+PO-260036,SUP-008,USD,2026-05-07,Supply of corrugated shipping cartons; foam edge protectors; pallet wrap film; bubble wrap rolls,10394.50,0.07
+PO-260037,SUP-015,EUR,2026-03-29,Supply of printed brochures; banner stands; photography session,15845.50,0.23
+PO-260038,SUP-017,JPY,2026-01-28,Supply of external SSD drives; 24-port network switches,1269600,0.10
+PO-260039,SUP-018,JPY,2026-05-20,Supply of backup service subscription; analytics platform licence renewal,2610000,0.10
+PO-260040,SUP-008,USD,2026-02-05,Supply of strapping bands; label rolls,14742.40,0.07
+PO-260041,SUP-018,JPY,2026-02-17,Supply of reporting tool licences; workflow automation licences; endpoint security licences; analytics platform licence renewal,2307800,0.10
+PO-260042,SUP-014,EUR,2026-01-15,Supply of desk lamps; stapler and binder sets; printer paper A4 boxes,10696.40,0.21
+PO-260043,SUP-005,GBP,2026-03-16,Supply of legal drafting hours; translation services; training facilitation days,6215.00,0.20
+PO-260044,SUP-011,EUR,2026-01-21,Supply of office cleaning services; lift servicing,15802.70,0.21
+PO-260045,SUP-005,GBP,2026-01-18,Supply of legal drafting hours; market research report; internal audit support hours; translation services,6551.70,0.20
+PO-260046,SUP-011,EUR,2026-05-19,Supply of office cleaning services; pest control visit,9899.90,0.21
+PO-260047,SUP-013,EUR,2026-05-14,Supply of process mapping workshop; market research report; training facilitation days; translation services,22746.80,0.19
+PO-260048,SUP-013,EUR,2026-04-30,Supply of translation services; market research report; internal audit support hours,9584.50,0.19
+PO-260050,SUP-016,EUR,2026-03-31,Supply of pallet wrap film; strapping bands,21662.00,0.19
+PO-260052,SUP-020,CNY,2026-04-09,Supply of container drayage; customs clearance handling; last-mile delivery runs,6756.40,0.13
+PO-260053,SUP-021,CNY,2026-01-15,Supply of translation services; legal drafting hours,9998.90,0.13
+PO-260054,SUP-020,CNY,2026-01-30,Supply of courier services; freight forwarding export shipment,12534.00,0.13
+PO-260055,SUP-016,EUR,2026-05-14,Supply of bubble wrap rolls; label rolls,21456.00,0.19
+PO-260056,SUP-011,EUR,2026-05-08,Supply of pest control visit; garden and grounds upkeep,10071.20,0.21
+PO-260058,SUP-005,GBP,2026-03-01,Supply of legal drafting hours; internal audit support hours; process mapping workshop,6911.00,0.20
+PO-260059,SUP-008,USD,2026-03-03,General services as agreed,14958.50,0.07
+PO-260060,SUP-015,EUR,2026-04-09,Supply of printed brochures; promotional tote bags,2303.90,0.23
+PO-260061,SUP-013,EUR,2026-04-04,Supply of process mapping workshop; legal drafting hours,12729.00,0.19
+PO-260062,SUP-008,USD,2026-03-24,Supply of label rolls; bubble wrap rolls; pallet wrap film; foam edge protectors,22352.50,0.07
+PO-260063,SUP-011,EUR,2026-03-30,Supply of garden and grounds upkeep; office cleaning services; HVAC maintenance visit,13499.00,0.21
+PO-260064,SUP-003,GBP,2026-01-24,Supply of office cleaning services; HVAC maintenance visit; garden and grounds upkeep,22106.00,0.20
+PO-260065,SUP-013,EUR,2026-04-09,Supply of training facilitation days; internal audit support hours; translation services,19911.00,0.19
+PO-260066,SUP-015,EUR,2026-02-28,Supply of photography session; promotional tote bags,11703.70,0.23
+PO-260067,SUP-006,USD,2026-01-16,Supply of stapler and binder sets; whiteboard markers; desk lamps; filing cabinets,7945.50,0.07
+PO-260068,SUP-016,EUR,2026-04-20,Supply of bubble wrap rolls; pallet wrap film,11474.00,0.19
+PO-260069,SUP-012,EUR,2026-04-11,Supply of warehouse pallet storage; courier services; container drayage; freight forwarding export shipment,20106.90,0.23
+PO-260070,SUP-002,GBP,2026-03-09,Supply of workflow automation licences; endpoint security licences; backup service subscription; analytics platform licence renewal,9868.50,0.20
+PO-260072,SUP-001,GBP,2026-01-19,Supply of rack mount servers; wireless keyboards,5723.10,0.20
+PO-260073,SUP-022,CNY,2026-04-08,Supply of filing cabinets; ergonomic chairs; stapler and binder sets,24288.80,0.13
+PO-260074,SUP-014,EUR,2026-02-18,Supply of filing cabinets; desk lamps; printer paper A4 boxes,13546.00,0.21
+PO-260075,SUP-019,JPY,2026-03-23,Supply of fire extinguisher inspection; office cleaning services; HVAC maintenance visit,1703600,0.10
+PO-260076,SUP-016,EUR,2026-03-26,Supply of bubble wrap rolls; pallet wrap film,6235.00,0.19
+PO-260077,SUP-013,EUR,2026-02-24,Supply of translation services; internal audit support hours; process mapping workshop,7619.00,0.19
+PO-260078,SUP-013,EUR,2026-01-23,Supply of legal drafting hours; training facilitation days,14419.80,0.19
+PO-260079,SUP-018,JPY,2026-05-10,Supply of backup service subscription; cloud storage subscription,133000,0.10
+PO-260080,SUP-013,EUR,2026-05-09,Supply of translation services; market research report; internal audit support hours,27945.90,0.19
+PO-260082,SUP-015,EUR,2026-01-15,Supply of banner stands; social media campaign assets; printed brochures; promotional tote bags,23190.50,0.23
+PO-260083,SUP-015,EUR,2026-02-27,Supply of promotional tote bags; social media campaign assets; trade show booth design,21880.00,0.23
+PO-260084,SUP-001,GBP,2026-02-21,Supply of 24-port network switches; USB-C monitors; laptop docking stations,19299.50,0.20
+PO-260085,SUP-002,GBP,2026-01-12,Supply of workflow automation licences; analytics platform licence renewal; endpoint security licences; cloud storage subscription,10973.80,0.20
+PO-260086,SUP-019,JPY,2026-02-28,Supply of pest control visit; office cleaning services; lift servicing,217600,0.10
+PO-260087,SUP-011,EUR,2026-02-23,Supply of garden and grounds upkeep; fire extinguisher inspection; HVAC maintenance visit,16770.80,0.21
+PO-260088,SUP-017,JPY,2026-02-10,Supply of external SSD drives; rack mount servers; laptop docking stations,1793600,0.10
+PO-260089,SUP-009,USD,2026-02-01,Supply of USB-C monitors; laptop docking stations,10433.60,0.08
+PO-260090,SUP-008,USD,2026-04-05,Supply of label rolls; corrugated shipping cartons; foam edge protectors; pallet wrap film,19518.70,0.07
+PO-260091,SUP-012,EUR,2026-02-21,Supply of courier services; customs clearance handling; freight forwarding export shipment,16010.40,0.23
+PO-260092,SUP-009,USD,2026-02-26,Supply of rack mount servers; laptop docking stations; USB-C monitors; external SSD drives,9131.80,0.08
+PO-260094,SUP-017,JPY,2026-03-03,Supply of USB-C monitors; laptop docking stations; 24-port network switches,2485200,0.10
+PO-260095,SUP-021,CNY,2026-02-17,Supply of training facilitation days; legal drafting hours,6284.00,0.13
+PO-260096,SUP-009,USD,2026-02-18,Supply of wireless keyboards; 24-port network switches; rack mount servers; external SSD drives,7803.80,0.08
+PO-260097,SUP-015,EUR,2026-02-04,Supply of photography session; social media campaign assets,27230.00,0.23
+PO-260098,SUP-020,CNY,2026-02-15,Supply of freight forwarding export shipment; container drayage,9598.40,0.13
+PO-260099,SUP-019,JPY,2026-05-06,Supply of pest control visit; fire extinguisher inspection; office cleaning services,2457200,0.10
+PO-260100,SUP-022,CNY,2026-04-01,Supply of whiteboard markers; ergonomic chairs,11872.00,0.13

@@ -1,0 +1,23 @@
+supplier_id,supplier_name,country,currency,default_tax_rate,bank_account,status,category
+SUP-001,Ilmarin Partners Ltd,GB,GBP,0.20,SYN-GB-289665379457,active,IT hardware
+SUP-002,Gaskarth Systems Ltd,GB,GBP,0.20,SYN-GB-526822747770,active,Software
+SUP-003,Brindlow Components Ltd,GB,GBP,0.20,SYN-GB-207691331451,active,Facilities
+SUP-004,Pelhaven Solutions Ltd,GB,GBP,0.20,SYN-GB-223382652547,active,Logistics
+SUP-005,Marrowdale Components Ltd,GB,GBP,0.20,SYN-GB-474873020686,active,Professional services
+SUP-006,Zyrelle Trading Ltd,US,USD,0.07,SYN-US-933484389055,active,Office supplies
+SUP-007,Dravik Components Ltd,US,USD,0.08,SYN-US-932639525200,active,Marketing
+SUP-008,Ilmarin Works Ltd,US,USD,0.07,SYN-US-898401418791,active,Industrial packaging
+SUP-009,Corvane Systems Ltd,US,USD,0.08,SYN-US-803232652854,active,IT hardware
+SUP-010,Sorrelby Industries Ltd,US,USD,0.07,SYN-US-668672466851,active,Software
+SUP-011,Naventa Industries Ltd,NL,EUR,0.21,SYN-NL-896258809495,active,Facilities
+SUP-012,Vantrel Solutions Ltd,IE,EUR,0.23,SYN-IE-427744924879,active,Logistics
+SUP-013,Tellmark Components Ltd,DE,EUR,0.19,SYN-DE-840151793619,active,Professional services
+SUP-014,Ulmerton Partners Ltd,NL,EUR,0.21,SYN-NL-970472432488,active,Office supplies
+SUP-015,Hollowfen Solutions Ltd,IE,EUR,0.23,SYN-IE-976236534474,active,Marketing
+SUP-016,Pelhaven Partners Ltd,DE,EUR,0.19,SYN-DE-939674853606,active,Industrial packaging
+SUP-017,Gaskarth Solutions Ltd,JP,JPY,0.10,SYN-JP-305003303571,active,IT hardware
+SUP-018,Kestrane Partners Ltd,JP,JPY,0.10,SYN-JP-716103073084,active,Software
+SUP-019,Marrowdale Supply Ltd,JP,JPY,0.10,SYN-JP-550207986232,active,Facilities
+SUP-020,Vantrel Supply Ltd,CN,CNY,0.13,SYN-CN-386958517009,active,Logistics
+SUP-021,Marrowdale Systems Ltd,CN,CNY,0.13,SYN-CN-681658949312,active,Professional services
+SUP-022,Hollowfen Trading Ltd,CN,CNY,0.13,SYN-CN-886680138681,active,Office supplies
